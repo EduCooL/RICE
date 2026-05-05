@@ -3,6 +3,9 @@
 @define-color base_01 #151A19;
 @define-color base_02 #1E2322;
 @define-color base_03 #2A302F;
+@define-color surface_00 rgba(14, 19, 18, 0.72);
+@define-color surface_01 rgba(21, 26, 25, 0.78);
+@define-color surface_02 rgba(30, 35, 34, 0.82);
 @define-color text_00 #D8E1DC;
 @define-color text_01 #A7B9B1;
 @define-color text_02 #73837D;
@@ -16,6 +19,8 @@
 @define-color border rgba(167, 185, 177, 0.18);
 @define-color border_active rgba(167, 185, 177, 0.42);
 @define-color shadow rgba(0, 0, 0, 0.45);
+
+/* Stage 2 constants: radius 8/12/14/16px, compact padding, subtle 1px borders. */
 
 /* Base */
 * {
@@ -34,15 +39,15 @@
 }
 
 .floating-notifications .notification {
-  background: rgba(21, 26, 25, 0.86);
+  background: @surface_02;
   border: 1px solid @border;
-  border-radius: 15px;
+  border-radius: 14px;
   box-shadow: 0 8px 24px @shadow;
 }
 
 /* Notification center */
 .control-center {
-  background: rgba(14, 19, 18, 0.76);
+  background: @surface_00;
   border: 1px solid @border;
   border-radius: 16px;
   box-shadow: 0 12px 32px @shadow;
@@ -62,7 +67,7 @@
 .notification,
 .notification-row .notification-background,
 .notification-content {
-  background: rgba(21, 26, 25, 0.82);
+  background: @surface_02;
   border-radius: 14px;
 }
 
@@ -164,7 +169,7 @@
 .widget-volume,
 .widget-backlight,
 .widget-buttons-grid {
-  background: rgba(21, 26, 25, 0.70);
+  background: @surface_00;
   border: 1px solid @border;
   border-radius: 14px;
   margin: 6px 0;
@@ -247,4 +252,3 @@ tooltip label {
   color: @text_00;
   padding: 6px 8px;
 }
-

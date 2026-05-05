@@ -4,6 +4,10 @@
     base-02: #1E2322;
     base-03: #2A302F;
 
+    surface-00: rgba(14, 19, 18, 0.72);
+    surface-01: rgba(21, 26, 25, 0.78);
+    surface-02: rgba(30, 35, 34, 0.82);
+
     text-00: #D8E1DC;
     text-01: #A7B9B1;
     text-02: #73837D;
@@ -24,4 +28,9 @@
     border: rgba(167, 185, 177, 0.18);
     border-active: rgba(167, 185, 177, 0.42);
     shadow: rgba(0, 0, 0, 0.45);
+
+    radius-sm: 8px;
+    radius-md: 12px;
+    radius-lg: 14px;
+    radius-xl: 16px;
 }

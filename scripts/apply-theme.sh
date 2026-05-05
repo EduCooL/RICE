@@ -26,8 +26,8 @@ done
 
 if (( missing == 0 )); then
   printf '\nTheme files are present.\n'
-  printf 'Future milestones will wire these tokens into Hyprland, Waybar, Rofi, SwayNC, Kitty, Starship, GTK, Qt, Hyprlock, and Quickshell.\n'
+  printf 'Stage 2 expects these files to stay aligned across Hyprland, Waybar, Rofi, SwayNC, Kitty, Starship, GTK, Qt, and Hyprlock.\n'
+  printf 'This script validates theme sources only; it does not overwrite component configs yet.\n'
 else
   printf '\nSome theme files are missing. Recreate them before applying configs.\n'
 fi
-

@@ -9,7 +9,7 @@
     base-02: #1E2322;
     base-03: #2A302F;
 
-    surface: rgba(21, 26, 25, 88%);
+    surface: rgba(21, 26, 25, 78%);
     surface-soft: rgba(30, 35, 34, 82%);
     surface-hover: rgba(42, 48, 47, 84%);
 
@@ -26,7 +26,10 @@
     border-active: rgba(167, 185, 177, 42%);
 
     font: "JetBrainsMono Nerd Font 11";
-    radius: 15px;
+    radius: 14px;
+    radius-sm: 8px;
+    radius-md: 12px;
+    radius-xl: 16px;
     spacing: 8px;
 }
 
@@ -41,7 +44,7 @@ mainbox {
     border: 1px;
     border-color: @border;
     border-radius: @radius;
-    padding: 14px;
+    padding: 12px;
     spacing: 10px;
 }
 
@@ -49,7 +52,7 @@ inputbar {
     background-color: rgba(14, 19, 18, 64%);
     border: 1px;
     border-color: @border;
-    border-radius: 12px;
+    border-radius: @radius-md;
     padding: 8px 10px;
     spacing: 8px;
     text-color: @text;
@@ -76,8 +79,8 @@ listview {
 
 element {
     background-color: transparent;
-    border-radius: 11px;
-    padding: 7px 9px;
+    border-radius: @radius-md;
+    padding: 6px 9px;
     spacing: 9px;
     text-color: @text-muted;
 }
@@ -124,7 +127,7 @@ message {
     background-color: @surface-soft;
     border: 1px;
     border-color: @border;
-    border-radius: 12px;
+    border-radius: @radius-md;
     padding: 8px;
 }
 
@@ -132,4 +135,3 @@ textbox {
     background-color: transparent;
     text-color: @text-muted;
 }
-

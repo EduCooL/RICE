@@ -563,6 +563,46 @@ Stage 2 — visual unification.
 
 Next work should align palette, spacing, radius, borders, opacity, blur, and typography across Hyprland, Waybar, Rofi, SwayNC, Kitty, Hyprlock, GTK, and Qt.
 
+## Stage 2 — Visual Unification
+
+This pass aligns the existing Stage-1 components without adding new major features.
+
+Aligned areas:
+
+- shared `surface_*` semantic tokens across theme files
+- 1px subtle sage borders
+- 8/12/14/16px radius scale
+- compact 6/8/12px padding scale
+- muted teal active/selection states
+- amber warnings and muted red critical states
+- consistent dark glass surfaces for Waybar, Rofi, SwayNC, Kitty, Hyprlock, GTK, and Qt references
+
+Intentionally not done yet:
+
+- no Quickshell implementation
+- no new wallpaper assets
+- no full GTK4/libadwaita override
+- no large component redesign
+
+Apply and reload:
+
+```bash
+./scripts/apply-theme.sh
+./scripts/stow-all.sh
+~/.config/hypr/scripts/reload.sh
+```
+
+Test visually:
+
+```bash
+./scripts/check-health.sh
+waybar -c ~/.config/waybar/config.jsonc -s ~/.config/waybar/style.css
+~/.config/hypr/scripts/launcher.sh
+notify-send "Theme test" "SwayNC visual check"
+kitty
+hyprlock -c ~/.config/hypr/hyprlock.conf
+```
+
 ## Roadmap
 
 1. Bootstrap repository foundation.

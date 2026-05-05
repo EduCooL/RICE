@@ -7,6 +7,10 @@ QtObject {
     readonly property color base02: "#1E2322"
     readonly property color base03: "#2A302F"
 
+    readonly property color surface00: Qt.rgba(14 / 255, 19 / 255, 18 / 255, 0.72)
+    readonly property color surface01: Qt.rgba(21 / 255, 26 / 255, 25 / 255, 0.78)
+    readonly property color surface02: Qt.rgba(30 / 255, 35 / 255, 34 / 255, 0.82)
+
     readonly property color text00: "#D8E1DC"
     readonly property color text01: "#A7B9B1"
     readonly property color text02: "#73837D"

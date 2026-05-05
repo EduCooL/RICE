@@ -242,6 +242,11 @@ check_file "$REPO_ROOT/themes/colors.css"
 check_file "$REPO_ROOT/themes/colors.rasi"
 check_file "$REPO_ROOT/themes/colors.sh"
 check_file "$REPO_ROOT/themes/colors.qml"
+check_file "$ROFI_CONFIG/themes/shared.rasi"
+check_file "$WAYBAR_CONFIG/style.css"
+check_file "$SWAYNC_CONFIG/style.css"
+check_file "$KITTY_CONFIG/theme.conf"
+check_file "$HYPR_CONFIG/hyprlock.conf"
 
 printf '\nRepository scripts\n'
 printf '%s\n' '------------------'

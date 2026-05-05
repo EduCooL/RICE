@@ -4,6 +4,9 @@
 @define-color base_01 #151A19;
 @define-color base_02 #1E2322;
 @define-color base_03 #2A302F;
+@define-color surface_00 rgba(14, 19, 18, 0.72);
+@define-color surface_01 rgba(21, 26, 25, 0.78);
+@define-color surface_02 rgba(30, 35, 34, 0.82);
 @define-color text_00 #D8E1DC;
 @define-color text_01 #A7B9B1;
 @define-color text_02 #73837D;
@@ -18,6 +21,8 @@
 @define-color border rgba(167, 185, 177, 0.18);
 @define-color border_active rgba(167, 185, 177, 0.42);
 @define-color shadow rgba(0, 0, 0, 0.45);
+
+/* Stage 2 constants: radius 8/12/14/16px, module spacing 6px, border 1px. */
 
 /* Base */
 * {
@@ -48,7 +53,7 @@ window#waybar {
 #custom-power {
   margin: 3px 0;
   padding: 3px 9px;
-  background: rgba(21, 26, 25, 0.78);
+  background: @surface_01;
   border: 1px solid @border;
   border-radius: 14px;
   color: @text_01;
@@ -61,7 +66,7 @@ window#waybar {
 #network:hover,
 #pulseaudio:hover,
 #clock:hover {
-  background: rgba(30, 35, 34, 0.86);
+  background: @surface_02;
   border-color: @border_active;
   color: @text_00;
 }
@@ -110,7 +115,7 @@ window#waybar {
   padding-left: 12px;
   padding-right: 12px;
   color: @text_01;
-  background: rgba(14, 19, 18, 0.62);
+  background: @surface_00;
 }
 
 window#waybar.empty #window {
@@ -177,4 +182,3 @@ tooltip label {
   padding: 6px 8px;
   color: @text_00;
 }
-
