@@ -112,6 +112,16 @@ check_file() {
   fi
 }
 
+check_dir() {
+  local path="$1"
+
+  if [[ -d "$path" ]]; then
+    ok "directory exists: $path"
+  else
+    warn "directory missing: $path"
+  fi
+}
+
 check_executable() {
   local path="$1"
 
@@ -183,6 +193,9 @@ check_command zoxide zoxide
 check_command yazi yazi
 check_command tmux tmux
 check_command gh gh
+check_command ssh ssh
+check_command docker docker
+check_command docker-compose docker-compose
 check_command nwg-look nwg-look
 check_command qt5ct qt5ct
 check_command qt6ct qt6ct
@@ -198,6 +211,59 @@ check_system_service NetworkManager
 check_system_service bluetooth
 check_user_service pipewire
 check_user_service wireplumber
+
+printf '\nRepository structure\n'
+printf '%s\n' '--------------------'
+
+check_dir "$REPO_ROOT/packages"
+check_dir "$REPO_ROOT/scripts"
+check_dir "$REPO_ROOT/stow"
+check_dir "$REPO_ROOT/themes"
+check_dir "$REPO_ROOT/wallpapers"
+check_dir "$REPO_ROOT/docs"
+check_file "$REPO_ROOT/AGENTS.md"
+check_file "$REPO_ROOT/README.md"
+check_file "$REPO_ROOT/install.sh"
+
+printf '\nPackage manifests\n'
+printf '%s\n' '-----------------'
+
+check_file "$REPO_ROOT/packages/pacman.txt"
+check_file "$REPO_ROOT/packages/aur.txt"
+check_file "$REPO_ROOT/packages/flatpak.txt"
+check_file "$REPO_ROOT/packages/optional.txt"
+
+printf '\nTheme files\n'
+printf '%s\n' '-----------'
+
+check_file "$REPO_ROOT/themes/colors.json"
+check_file "$REPO_ROOT/themes/colors.conf"
+check_file "$REPO_ROOT/themes/colors.css"
+check_file "$REPO_ROOT/themes/colors.rasi"
+check_file "$REPO_ROOT/themes/colors.sh"
+check_file "$REPO_ROOT/themes/colors.qml"
+
+printf '\nRepository scripts\n'
+printf '%s\n' '------------------'
+
+check_executable "$REPO_ROOT/install.sh"
+check_executable "$REPO_ROOT/scripts/install-packages.sh"
+check_executable "$REPO_ROOT/scripts/backup-existing-configs.sh"
+check_executable "$REPO_ROOT/scripts/stow-all.sh"
+check_executable "$REPO_ROOT/scripts/apply-theme.sh"
+check_executable "$REPO_ROOT/scripts/check-health.sh"
+check_executable "$REPO_ROOT/scripts/dotpull.sh"
+check_executable "$REPO_ROOT/scripts/dotstatus.sh"
+check_executable "$REPO_ROOT/scripts/dev-health.sh"
+
+printf '\nDocumentation\n'
+printf '%s\n' '-------------'
+
+check_file "$REPO_ROOT/docs/DEV_WORKFLOW.md"
+check_file "$REPO_ROOT/docs/DOTFILES_MAINTENANCE.md"
+check_file "$REPO_ROOT/docs/DOCKER_POSTGRES.md"
+check_file "$REPO_ROOT/docs/SSH_GITHUB.md"
+check_file "$REPO_ROOT/wallpapers/README.md"
 
 printf '\nHyprland config\n'
 printf '%s\n' '---------------'
@@ -234,6 +300,18 @@ check_executable "$HYPR_CONFIG/scripts/notification-center.sh"
 check_executable "$HYPR_CONFIG/scripts/reload.sh"
 check_executable "$HYPR_CONFIG/scripts/toggle-night-mode.sh"
 check_executable "$HYPR_CONFIG/scripts/wallpaper.sh"
+
+printf '\nWallpaper and lockscreen\n'
+printf '%s\n' '------------------------'
+
+if [[ -e "$HOME/Pictures/Wallpapers/current" ]]; then
+  ok "wallpaper convention exists: $HOME/Pictures/Wallpapers/current"
+else
+  warn "wallpaper missing: create ~/Pictures/Wallpapers/current or run wallpapers/README.md setup"
+fi
+
+check_file "$HYPR_CONFIG/hyprlock.conf"
+check_file "$HYPR_CONFIG/hyprpaper.conf"
 
 printf '\nWaybar config\n'
 printf '%s\n' '-------------'
@@ -347,6 +425,13 @@ check_file "$XDG_CONFIG/user-dirs.dirs"
 check_file "$XDG_CONFIG/mimeapps.list"
 check_file "$XDG_CONFIG/README.md"
 check_file "$THUNAR_CONFIG/uca.xml"
+
+printf '\nNext actions\n'
+printf '%s\n' '------------'
+printf '1. Fix WARN items that apply to this machine.\n'
+printf '2. If configs were just pulled, run: ./scripts/stow-all.sh\n'
+printf '3. Reload Hyprland with: hyprctl reload\n'
+printf '4. Test wallpaper with: ~/.config/hypr/scripts/wallpaper.sh\n'
 
 printf '\nHealth check finished. Warnings are expected before package installation.\n'
 exit 0

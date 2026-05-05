@@ -33,7 +33,11 @@ for module_path in "${modules[@]}"; do
   fi
 
   printf '[STOW] %s\n' "$module"
-  stow --dir="$STOW_DIR" --target="$HOME" "$module"
+  if ! stow --restow --dir="$STOW_DIR" --target="$HOME" "$module"; then
+    printf '[ERROR] Stow failed for module: %s\n' "$module" >&2
+    printf '        Run ./scripts/backup-existing-configs.sh if this is a conflict with existing config files.\n' >&2
+    exit 1
+  fi
 done
 
 printf '[OK] Stow complete.\n'

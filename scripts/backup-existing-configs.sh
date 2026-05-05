@@ -21,6 +21,7 @@ targets=(
   "$HOME/.config/user-dirs.dirs"
   "$HOME/.config/mimeapps.list"
   "$HOME/.config/Thunar"
+  "$HOME/.config/yazi"
   "$HOME/.config/nvim"
 )
 
