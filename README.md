@@ -443,6 +443,21 @@ Recommended manual selections:
 
 Known limitations: the Kvantum theme is a minimal local stub, not a full polished theme. Cursor theme is set to `Bibata-Modern-Ice` in GTK settings if installed; otherwise select an available cursor through `nwg-look`.
 
+Qt integration is not automatic magic. The Hyprland environment defaults to `QT_QPA_PLATFORMTHEME=qt6ct` plus `QT_STYLE_OVERRIDE=kvantum` for modern Qt apps. If a Qt5-only app still looks like a Windows/default style, test it from a shell with:
+
+```bash
+QT_QPA_PLATFORMTHEME=qt5ct QT_STYLE_OVERRIDE=kvantum app-name
+```
+
+Then verify both `qt5ct` and `qt6ct` manually:
+
+```text
+Style: Kvantum
+Icons: Papirus-Dark
+Font: Inter 10
+Kvantum theme: CozyRain
+```
+
 For better Thunar matching, open `nwg-look` and verify:
 
 ```text
@@ -587,6 +602,10 @@ This pass corrected the first visual unification attempt to better match the coz
 ## Stage 2 hard visual reset
 
 This pass fixes the first failed visual direction: removes bright cyan/light-blue treatment, fixes broken Rofi power icons, darkens SwayNC/Waybar surfaces, and documents the wallpaper requirements needed to match the cozy rainy reference.
+
+## Stage 2 forensic correction
+
+This pass fixes concrete mismatches seen in real screenshots: removes the remaining cyan/light-blue treatment, darkens Rofi inputs, improves clipboard/power menu behavior, clarifies GTK/Qt manual integration, and reinforces the wallpaper requirements needed for the intended cozy rainy look.
 
 Aligned areas:
 

@@ -63,9 +63,11 @@ prompt {
 }
 
 entry {
+    background-color: transparent;
     placeholder: "search";
     placeholder-color: @text-dim;
     text-color: @text;
+    cursor-color: @sage;
 }
 
 listview {

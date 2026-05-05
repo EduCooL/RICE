@@ -1,7 +1,7 @@
 @import "shared.rasi"
 
 window {
-    width: 36%;
+    width: 34%;
     location: center;
     anchor: center;
 }
@@ -13,7 +13,7 @@ listview {
 
 prompt {
     enabled: true;
-    text-color: @amber;
+    text-color: @text-dim;
 }
 
 element {

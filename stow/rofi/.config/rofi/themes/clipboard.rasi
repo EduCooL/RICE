@@ -1,17 +1,21 @@
 @import "shared.rasi"
 
+configuration {
+    show-icons: false;
+}
+
 window {
-    width: 48%;
+    width: 44%;
     location: center;
     anchor: center;
 }
 
 listview {
-    lines: 12;
+    lines: 10;
 }
 
 element {
-    padding: 6px 9px;
+    padding: 7px 9px;
 }
 
 element-text {

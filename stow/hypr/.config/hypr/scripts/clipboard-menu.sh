@@ -17,12 +17,14 @@ if ! command -v cliphist >/dev/null 2>&1 || ! command -v wl-copy >/dev/null 2>&1
   exit 1
 fi
 
-if ! cliphist list >/dev/null 2>&1; then
+history="$(cliphist list 2>/dev/null || true)"
+
+if [[ -z "$history" ]]; then
   notify "No clipboard history yet"
   exit 0
 fi
 
-selection="$(cliphist list | rofi -dmenu -i -p "clipboard" -theme "$HOME/.config/rofi/themes/clipboard.rasi" || true)"
+selection="$(printf '%s\n' "$history" | rofi -dmenu -i -no-show-icons -p "clipboard" -theme "$HOME/.config/rofi/themes/clipboard.rasi" || true)"
 
 if [[ -z "$selection" ]]; then
   exit 0
