@@ -6,7 +6,7 @@ This repository is the bootstrap foundation for a personal Arch Linux Hyprland r
 
 The target mood is a cozy dark room on a rainy evening: graphite and forest-black surfaces, muted teal and sage accents, warm amber highlights, translucent rounded panels, and low visual noise. The goal is a daily usable development desktop, not a screenshot-only setup.
 
-This milestone only creates the repository structure, package manifests, theme tokens, and safe setup scripts. Full Hyprland, Waybar, Rofi, SwayNC, Kitty, Zsh, Starship, lock screen, and wallpaper configs will be added in later milestones.
+The bootstrap milestone created the repository structure, package manifests, theme tokens, and safe setup scripts. The Hyprland MVP now adds the first working compositor layer. Waybar, Rofi, SwayNC, Kitty, Zsh, Starship, GTK, Qt, and Quickshell styling will be added in later milestones.
 
 ## Stack
 
@@ -70,6 +70,12 @@ The script uses:
 stow --dir="$REPO_ROOT/stow" --target="$HOME" "$module"
 ```
 
+Stow only Hyprland:
+
+```bash
+stow --dir="$PWD/stow" --target="$HOME" hypr
+```
+
 ## Backup Behavior
 
 Before stowing, run:
@@ -101,9 +107,27 @@ Future configs should import or generate from these values so Hyprland, Waybar, 
 
 ## Keybinds
 
-The keybind map will be added with the modular Hyprland MVP config.
+Main modifier: `SUPER`.
 
-Planned main modifier: `SUPER`.
+Core Hyprland MVP bindings:
+
+- `SUPER + Return`: terminal
+- `SUPER + D`: launcher
+- `SUPER + E`: file manager
+- `SUPER + B`: browser
+- `SUPER + Q`: close focused window
+- `SUPER + F`: fullscreen
+- `SUPER + Space`: toggle floating
+- `SUPER + V`: clipboard history
+- `SUPER + L`: lock
+- `SUPER + Shift + S`: screenshot area
+- `SUPER + Print`: full screenshot
+- `SUPER + Shift + Q`: power menu
+- `SUPER + R`: reload Hyprland helper
+- `SUPER + 1-6`: switch workspace
+- `SUPER + Shift + 1-6`: move focused window to workspace
+- `SUPER + arrows`: focus windows
+- `SUPER + Shift + arrows`: move windows
 
 ## Wallpaper Convention
 
@@ -116,10 +140,62 @@ Wallpapers should live under:
 The planned default path for configs is:
 
 ```text
-~/Pictures/Wallpapers/cozy-rainy-study.jpg
+~/Pictures/Wallpapers/current
 ```
 
 Large wallpaper binaries are not committed by default.
+
+## Hyprland MVP
+
+The Hyprland module lives at:
+
+```text
+stow/hypr/.config/hypr/
+```
+
+It is split into:
+
+- `hyprland.conf` as the small entrypoint
+- `conf/` for environment, monitors, input, decoration, animations, gestures, workspaces, window rules, keybinds, and autostart
+- `scripts/` for screenshots, launcher, clipboard menu, power menu, reload, night mode placeholder, and wallpaper helper
+- `hyprlock.conf` and `hyprpaper.conf`
+
+To stow only this module:
+
+```bash
+stow --dir="$PWD/stow" --target="$HOME" hypr
+```
+
+To reload after changes:
+
+```bash
+~/.config/hypr/scripts/reload.sh
+```
+
+Screenshot behavior:
+
+- area screenshots use `grim`, `slurp`, and `wl-copy`
+- full screenshots use `grim` and `wl-copy`
+- files are saved to `~/Pictures/Screenshots/`
+- screenshots are copied to the clipboard
+- `notify-send` is used only if available
+
+Clipboard behavior:
+
+- `wl-paste` watchers are started by Hyprland autostart
+- `SUPER + V` opens `cliphist list` through `rofi -dmenu`
+- the selected item is decoded with `cliphist decode` and copied with `wl-copy`
+
+Known Hyprland MVP limitations:
+
+- Waybar is started but not styled yet
+- Rofi is used without project themes yet
+- SwayNC is started but not themed yet
+- night mode is a placeholder
+- wallpaper files are local-only and not committed
+- Quickshell is intentionally not implemented yet
+
+Next step: implement Waybar MVP styling and status modules according to the cozy dark reference.
 
 ## Health Check
 
@@ -148,4 +224,3 @@ Backups created by `scripts/backup-existing-configs.sh` are stored under:
 ```
 
 To roll back a config, unstow the relevant module and move the backed-up file or directory back into place.
-

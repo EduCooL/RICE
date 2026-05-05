@@ -1,6 +1,14 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+HYPR_SOURCE="$REPO_ROOT/stow/hypr/.config/hypr"
+HYPR_CONFIG="$HOME/.config/hypr"
+
+if [[ ! -f "$HYPR_CONFIG/hyprland.conf" && -d "$HYPR_SOURCE" ]]; then
+  HYPR_CONFIG="$HYPR_SOURCE"
+fi
+
 ok() {
   printf '[OK]   %s\n' "$1"
 }
@@ -21,6 +29,28 @@ check_command() {
   done
 
   warn "$label command missing: $*"
+}
+
+check_file() {
+  local path="$1"
+
+  if [[ -f "$path" ]]; then
+    ok "file exists: $path"
+  else
+    warn "file missing: $path"
+  fi
+}
+
+check_executable() {
+  local path="$1"
+
+  if [[ -x "$path" ]]; then
+    ok "script executable: $path"
+  elif [[ -f "$path" ]]; then
+    warn "script exists but is not executable: $path"
+  else
+    warn "script missing: $path"
+  fi
 }
 
 check_system_service() {
@@ -67,6 +97,7 @@ check_command grim grim
 check_command slurp slurp
 check_command swappy swappy
 check_command wl-copy wl-copy
+check_command wl-paste wl-paste
 check_command cliphist cliphist
 check_command zsh zsh
 check_command starship starship
@@ -80,6 +111,34 @@ check_system_service bluetooth
 check_user_service pipewire
 check_user_service wireplumber
 
+printf '\nHyprland config\n'
+printf '---------------\n'
+
+check_file "$HYPR_CONFIG/hyprland.conf"
+check_file "$HYPR_CONFIG/hyprlock.conf"
+check_file "$HYPR_CONFIG/hyprpaper.conf"
+check_file "$HYPR_CONFIG/conf/env.conf"
+check_file "$HYPR_CONFIG/conf/monitors.conf"
+check_file "$HYPR_CONFIG/conf/input.conf"
+check_file "$HYPR_CONFIG/conf/decoration.conf"
+check_file "$HYPR_CONFIG/conf/animations.conf"
+check_file "$HYPR_CONFIG/conf/gestures.conf"
+check_file "$HYPR_CONFIG/conf/workspaces.conf"
+check_file "$HYPR_CONFIG/conf/windowrules.conf"
+check_file "$HYPR_CONFIG/conf/keybinds.conf"
+check_file "$HYPR_CONFIG/conf/autostart.conf"
+
+printf '\nHyprland helper scripts\n'
+printf '-----------------------\n'
+
+check_executable "$HYPR_CONFIG/scripts/screenshot-area.sh"
+check_executable "$HYPR_CONFIG/scripts/screenshot-full.sh"
+check_executable "$HYPR_CONFIG/scripts/clipboard-menu.sh"
+check_executable "$HYPR_CONFIG/scripts/power-menu.sh"
+check_executable "$HYPR_CONFIG/scripts/launcher.sh"
+check_executable "$HYPR_CONFIG/scripts/reload.sh"
+check_executable "$HYPR_CONFIG/scripts/toggle-night-mode.sh"
+check_executable "$HYPR_CONFIG/scripts/wallpaper.sh"
+
 printf '\nHealth check finished. Warnings are expected before package installation.\n'
 exit 0
-
