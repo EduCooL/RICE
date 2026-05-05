@@ -15,7 +15,12 @@ targets=(
   "$HOME/.gitconfig"
   "$HOME/.config/gtk-3.0"
   "$HOME/.config/gtk-4.0"
+  "$HOME/.config/qt5ct"
   "$HOME/.config/qt6ct"
+  "$HOME/.config/Kvantum"
+  "$HOME/.config/user-dirs.dirs"
+  "$HOME/.config/mimeapps.list"
+  "$HOME/.config/Thunar"
   "$HOME/.config/nvim"
 )
 
@@ -60,4 +65,3 @@ if (( moved == 0 )); then
 else
   printf '[OK] Backups stored in: %s\n' "$BACKUP_ROOT"
 fi
-

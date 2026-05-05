@@ -6,7 +6,7 @@ This repository is the bootstrap foundation for a personal Arch Linux Hyprland r
 
 The target mood is a cozy dark room on a rainy evening: graphite and forest-black surfaces, muted teal and sage accents, warm amber highlights, translucent rounded panels, and low visual noise. The goal is a daily usable development desktop, not a screenshot-only setup.
 
-The bootstrap milestone created the repository structure, package manifests, theme tokens, and safe setup scripts. The current MVP includes Hyprland, Waybar, Rofi, SwayNC, Kitty, Zsh, and Starship foundations. GTK, Qt, deeper app polish, and Quickshell will be added in later milestones.
+The bootstrap milestone created the repository structure, package manifests, theme tokens, and safe setup scripts. The current MVP includes Hyprland, Waybar, Rofi, SwayNC, Kitty, Zsh, Starship, GTK, Qt, XDG, and file manager foundations. Deeper app polish and Quickshell will be added in later milestones.
 
 ## Stack
 
@@ -354,6 +354,48 @@ starship explain
 
 The shell foundation is intentionally lightweight: no Oh My Zsh, no external plugin manager, and optional integrations only when the relevant command exists. Starship provides a compact prompt with directory, Git state, selected language runtimes, Docker context, command duration, and success/error character color.
 
+## GTK/Qt And File Manager MVP
+
+Desktop integration modules:
+
+```text
+stow/gtk/
+stow/qt/
+stow/xdg/
+stow/thunar/
+```
+
+Apply or refresh them with:
+
+```bash
+stow --restow --dir="$PWD/stow" --target="$HOME" gtk qt xdg thunar
+```
+
+Apply XDG user directories:
+
+```bash
+xdg-user-dirs-update
+```
+
+Open GUI configuration tools:
+
+```bash
+nwg-look
+qt5ct
+qt6ct
+kvantummanager
+```
+
+Recommended manual selections:
+
+- GTK theme: `Adwaita-dark`
+- Icons: `Papirus-Dark`
+- Font: `Inter 10`
+- Qt style: `Kvantum`
+- Kvantum theme: `CozyRain`
+
+Known limitations: the Kvantum theme is a minimal local stub, not a full polished theme. Cursor theme is set to `Bibata-Modern-Ice` in GTK settings if installed; otherwise select an available cursor through `nwg-look`.
+
 ## Health Check
 
 Run:
@@ -368,9 +410,9 @@ The report warns about missing commands or inactive services but exits with stat
 
 1. Bootstrap repository foundation.
 2. Implement modular Hyprland MVP config and core scripts.
-3. Add Waybar, Rofi, SwayNC, Kitty, Zsh, Starship, Hyprlock, Hyprpaper, GTK, and Qt configs.
-4. Refine dashboard behavior and project launcher.
-5. Prepare a small Quickshell prototype after the MVP is comfortable.
+3. Add Waybar, Rofi, SwayNC, Kitty, Zsh, Starship, Hyprlock, Hyprpaper, GTK, Qt, XDG, and file manager configs.
+4. Add developer tooling polish and optional editor/file-manager basics.
+5. Refine dashboard behavior and prepare a small Quickshell prototype after the MVP is comfortable.
 
 ## Rollback / Recovery
 

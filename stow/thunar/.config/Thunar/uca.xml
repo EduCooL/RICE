@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+  <action>
+    <icon>utilities-terminal</icon>
+    <name>Open Terminal Here</name>
+    <submenu></submenu>
+    <unique-id>170000000001</unique-id>
+    <command>kitty --directory %f</command>
+    <description>Open Kitty in the selected folder</description>
+    <patterns>*</patterns>
+    <directories/>
+  </action>
+  <action>
+    <icon>utilities-terminal</icon>
+    <name>Open Yazi Here</name>
+    <submenu></submenu>
+    <unique-id>170000000002</unique-id>
+    <command>sh -c 'command -v yazi &gt;/dev/null 2&gt;&amp;1 &amp;&amp; kitty --directory "$1" yazi "$1"' sh %f</command>
+    <description>Open Yazi in Kitty for the selected folder</description>
+    <patterns>*</patterns>
+    <directories/>
+  </action>
+  <action>
+    <icon>visual-studio-code</icon>
+    <name>Open In VS Code</name>
+    <submenu></submenu>
+    <unique-id>170000000003</unique-id>
+    <command>sh -c 'command -v code &gt;/dev/null 2&gt;&amp;1 &amp;&amp; code "$1"' sh %f</command>
+    <description>Open selected file or folder in VS Code if installed</description>
+    <patterns>*</patterns>
+    <directories/>
+    <text-files/>
+  </action>
+  <action>
+    <icon>edit-copy</icon>
+    <name>Copy Path</name>
+    <submenu></submenu>
+    <unique-id>170000000004</unique-id>
+    <command>sh -c 'printf %s "$1" | wl-copy' sh %f</command>
+    <description>Copy selected path to clipboard</description>
+    <patterns>*</patterns>
+    <directories/>
+    <text-files/>
+    <image-files/>
+    <audio-files/>
+    <video-files/>
+    <other-files/>
+  </action>
+</actions>
+

@@ -1,0 +1,23 @@
+/* Minimal GTK3 polish. Keep app-specific hacks out of this file. */
+window,
+dialog {
+  background-color: #151A19;
+  color: #D8E1DC;
+}
+
+popover,
+menu,
+.menu {
+  border-radius: 12px;
+  border: 1px solid rgba(167, 185, 177, 0.18);
+}
+
+button {
+  border-radius: 8px;
+}
+
+selection {
+  background-color: #516F66;
+  color: #D8E1DC;
+}
+

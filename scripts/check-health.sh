@@ -23,6 +23,18 @@ ZSH_CONFIG="$ZSH_CONFIG_HOME"
 STARSHIP_SOURCE="$REPO_ROOT/stow/starship/.config"
 STARSHIP_CONFIG_HOME="$HOME/.config"
 STARSHIP_CONFIG="$STARSHIP_CONFIG_HOME"
+GTK_SOURCE="$REPO_ROOT/stow/gtk/.config"
+GTK_CONFIG_HOME="$HOME/.config"
+GTK_CONFIG="$GTK_CONFIG_HOME"
+QT_SOURCE="$REPO_ROOT/stow/qt/.config"
+QT_CONFIG_HOME="$HOME/.config"
+QT_CONFIG="$QT_CONFIG_HOME"
+XDG_SOURCE="$REPO_ROOT/stow/xdg/.config"
+XDG_CONFIG_HOME="$HOME/.config"
+XDG_CONFIG="$XDG_CONFIG_HOME"
+THUNAR_SOURCE="$REPO_ROOT/stow/thunar/.config/Thunar"
+THUNAR_CONFIG_HOME="$HOME/.config/Thunar"
+THUNAR_CONFIG="$THUNAR_CONFIG_HOME"
 
 if [[ ! -f "$HYPR_CONFIG_HOME/hyprland.conf" && -d "$HYPR_SOURCE" ]]; then
   HYPR_CONFIG="$HYPR_SOURCE"
@@ -50,6 +62,22 @@ fi
 
 if [[ ! -f "$STARSHIP_CONFIG_HOME/starship.toml" && -d "$STARSHIP_SOURCE" ]]; then
   STARSHIP_CONFIG="$STARSHIP_SOURCE"
+fi
+
+if [[ ! -f "$GTK_CONFIG_HOME/gtk-3.0/settings.ini" && -d "$GTK_SOURCE" ]]; then
+  GTK_CONFIG="$GTK_SOURCE"
+fi
+
+if [[ ! -f "$QT_CONFIG_HOME/qt6ct/qt6ct.conf" && -d "$QT_SOURCE" ]]; then
+  QT_CONFIG="$QT_SOURCE"
+fi
+
+if [[ ! -f "$XDG_CONFIG_HOME/user-dirs.dirs" && -d "$XDG_SOURCE" ]]; then
+  XDG_CONFIG="$XDG_SOURCE"
+fi
+
+if [[ ! -f "$THUNAR_CONFIG_HOME/uca.xml" && -d "$THUNAR_SOURCE" ]]; then
+  THUNAR_CONFIG="$THUNAR_SOURCE"
 fi
 
 ok() {
@@ -155,6 +183,13 @@ check_command zoxide zoxide
 check_command yazi yazi
 check_command tmux tmux
 check_command gh gh
+check_command nwg-look nwg-look
+check_command qt5ct qt5ct
+check_command qt6ct qt6ct
+check_command kvantummanager kvantummanager
+check_command thunar thunar
+check_command xdg-user-dirs-update xdg-user-dirs-update
+check_command xdg-open xdg-open
 
 printf '\nServices\n'
 printf '%s\n' '--------'
@@ -275,6 +310,43 @@ check_file "$ZSH_CONFIG/.config/zsh/aliases.zsh"
 check_file "$ZSH_CONFIG/.config/zsh/functions.zsh"
 check_file "$ZSH_CONFIG/README.md"
 check_file "$STARSHIP_CONFIG/starship.toml"
+
+printf '\nGTK, Qt, XDG, and file manager config\n'
+printf '%s\n' '--------------------------------------'
+
+if [[ "$GTK_CONFIG" == "$GTK_SOURCE" ]]; then
+  warn "GTK module is not stowed to $GTK_CONFIG_HOME; checking repository source files instead"
+  warn "Run: stow --restow --dir=\"\$PWD/stow\" --target=\"\$HOME\" gtk"
+fi
+
+if [[ "$QT_CONFIG" == "$QT_SOURCE" ]]; then
+  warn "Qt module is not stowed to $QT_CONFIG_HOME; checking repository source files instead"
+  warn "Run: stow --restow --dir=\"\$PWD/stow\" --target=\"\$HOME\" qt"
+fi
+
+if [[ "$XDG_CONFIG" == "$XDG_SOURCE" ]]; then
+  warn "XDG module is not stowed to $XDG_CONFIG_HOME; checking repository source files instead"
+  warn "Run: stow --restow --dir=\"\$PWD/stow\" --target=\"\$HOME\" xdg"
+fi
+
+if [[ "$THUNAR_CONFIG" == "$THUNAR_SOURCE" ]]; then
+  warn "Thunar module is not stowed to $THUNAR_CONFIG_HOME; checking repository source files instead"
+  warn "Run: stow --restow --dir=\"\$PWD/stow\" --target=\"\$HOME\" thunar"
+fi
+
+check_file "$GTK_CONFIG/gtk-3.0/settings.ini"
+check_file "$GTK_CONFIG/gtk-3.0/gtk.css"
+check_file "$GTK_CONFIG/gtk-4.0/settings.ini"
+check_file "$GTK_CONFIG/gtk-4.0/gtk.css"
+check_file "$QT_CONFIG/qt5ct/qt5ct.conf"
+check_file "$QT_CONFIG/qt6ct/qt6ct.conf"
+check_file "$QT_CONFIG/Kvantum/kvantum.kvconfig"
+check_file "$QT_CONFIG/Kvantum/CozyRain/CozyRain.kvconfig"
+check_file "$QT_CONFIG/Kvantum/CozyRain/CozyRain.svg"
+check_file "$XDG_CONFIG/user-dirs.dirs"
+check_file "$XDG_CONFIG/mimeapps.list"
+check_file "$XDG_CONFIG/README.md"
+check_file "$THUNAR_CONFIG/uca.xml"
 
 printf '\nHealth check finished. Warnings are expected before package installation.\n'
 exit 0
