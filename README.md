@@ -125,6 +125,7 @@ Core Hyprland MVP bindings:
 - `SUPER + Shift + Q`: power menu
 - `SUPER + R`: reload Hyprland helper
 - `SUPER + Tab`: window switcher
+- `SUPER + N`: notification center
 - `SUPER + 1-6`: switch workspace
 - `SUPER + Shift + 1-6`: move focused window to workspace
 - `SUPER + arrows`: focus windows
@@ -278,6 +279,48 @@ Test the menus:
 Rofi provides the temporary app launcher, clipboard menu, power menu, and window switcher. It uses the same graphite, muted teal, sage, and amber palette as Waybar, but the palette is duplicated in `themes/shared.rasi` until `scripts/apply-theme.sh` can generate/import Rasi tokens automatically.
 
 Power actions are guarded: reboot and shutdown require confirmation. Rofi remains temporary for some UI flows until a future custom Quickshell shell exists.
+
+## SwayNC MVP
+
+The SwayNC module lives at:
+
+```text
+stow/swaync/.config/swaync/
+```
+
+Apply or refresh it with:
+
+```bash
+stow --restow --dir="$PWD/stow" --target="$HOME" swaync
+```
+
+If you also want the `SUPER + N` notification-center helper:
+
+```bash
+stow --restow --dir="$PWD/stow" --target="$HOME" swaync hypr
+hyprctl reload
+```
+
+Restart SwayNC:
+
+```bash
+pkill swaync
+swaync &
+```
+
+Test notifications:
+
+```bash
+notify-send "Glassy notification" "SwayNC theme test"
+```
+
+Toggle the notification center:
+
+```bash
+~/.config/hypr/scripts/notification-center.sh
+```
+
+SwayNC is the temporary notification center and lightweight control center. It keeps the dark graphite, muted teal, sage border, and warm amber visual language without trying to become the final Quickshell dashboard.
 
 ## Health Check
 

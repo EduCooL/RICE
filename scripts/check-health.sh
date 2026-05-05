@@ -11,6 +11,9 @@ WAYBAR_CONFIG="$WAYBAR_CONFIG_HOME"
 ROFI_SOURCE="$REPO_ROOT/stow/rofi/.config/rofi"
 ROFI_CONFIG_HOME="$HOME/.config/rofi"
 ROFI_CONFIG="$ROFI_CONFIG_HOME"
+SWAYNC_SOURCE="$REPO_ROOT/stow/swaync/.config/swaync"
+SWAYNC_CONFIG_HOME="$HOME/.config/swaync"
+SWAYNC_CONFIG="$SWAYNC_CONFIG_HOME"
 
 if [[ ! -f "$HYPR_CONFIG_HOME/hyprland.conf" && -d "$HYPR_SOURCE" ]]; then
   HYPR_CONFIG="$HYPR_SOURCE"
@@ -22,6 +25,10 @@ fi
 
 if [[ ! -f "$ROFI_CONFIG_HOME/config.rasi" && -d "$ROFI_SOURCE" ]]; then
   ROFI_CONFIG="$ROFI_SOURCE"
+fi
+
+if [[ ! -f "$SWAYNC_CONFIG_HOME/config.json" && -d "$SWAYNC_SOURCE" ]]; then
+  SWAYNC_CONFIG="$SWAYNC_SOURCE"
 fi
 
 ok() {
@@ -105,6 +112,7 @@ check_command hyprland hyprland Hyprland
 check_command waybar waybar
 check_command rofi rofi
 check_command swaync swaync
+check_command swaync-client swaync-client
 check_command kitty kitty
 check_command hyprpaper hyprpaper
 check_command hyprlock hyprlock
@@ -157,6 +165,7 @@ check_executable "$HYPR_CONFIG/scripts/clipboard-menu.sh"
 check_executable "$HYPR_CONFIG/scripts/power-menu.sh"
 check_executable "$HYPR_CONFIG/scripts/launcher.sh"
 check_executable "$HYPR_CONFIG/scripts/window-menu.sh"
+check_executable "$HYPR_CONFIG/scripts/notification-center.sh"
 check_executable "$HYPR_CONFIG/scripts/reload.sh"
 check_executable "$HYPR_CONFIG/scripts/toggle-night-mode.sh"
 check_executable "$HYPR_CONFIG/scripts/wallpaper.sh"
@@ -196,6 +205,18 @@ check_file "$ROFI_CONFIG/themes/power-menu.rasi"
 check_file "$ROFI_CONFIG/themes/clipboard.rasi"
 check_file "$ROFI_CONFIG/themes/window.rasi"
 check_file "$ROFI_CONFIG/README.md"
+
+printf '\nSwayNC config\n'
+printf '%s\n' '-------------'
+
+if [[ "$SWAYNC_CONFIG" == "$SWAYNC_SOURCE" ]]; then
+  warn "SwayNC module is not stowed to $SWAYNC_CONFIG_HOME; checking repository source files instead"
+  warn "Run: stow --restow --dir=\"\$PWD/stow\" --target=\"\$HOME\" swaync hypr"
+fi
+
+check_file "$SWAYNC_CONFIG/config.json"
+check_file "$SWAYNC_CONFIG/style.css"
+check_file "$SWAYNC_CONFIG/README.md"
 
 printf '\nHealth check finished. Warnings are expected before package installation.\n'
 exit 0
