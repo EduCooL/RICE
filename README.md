@@ -124,6 +124,7 @@ Core Hyprland MVP bindings:
 - `SUPER + Print`: full screenshot
 - `SUPER + Shift + Q`: power menu
 - `SUPER + R`: reload Hyprland helper
+- `SUPER + Tab`: window switcher
 - `SUPER + 1-6`: switch workspace
 - `SUPER + Shift + 1-6`: move focused window to workspace
 - `SUPER + arrows`: focus windows
@@ -249,7 +250,34 @@ Waybar integrates with the existing Hypr scripts:
 - `custom/clipboard`: `~/.config/hypr/scripts/clipboard-menu.sh`
 - `custom/power`: `~/.config/hypr/scripts/power-menu.sh`
 
-Rofi and SwayNC are still not themed yet. Waybar is the temporary stage-1 shell; the future custom shell direction remains Quickshell after the MVP is stable.
+SwayNC is still not themed yet. Waybar and Rofi are temporary stage-1 components; the future custom shell direction remains Quickshell after the MVP is stable.
+
+## Rofi MVP
+
+The Rofi module lives at:
+
+```text
+stow/rofi/.config/rofi/
+```
+
+Apply or refresh Rofi and the Hypr scripts that call it:
+
+```bash
+stow --restow --dir="$PWD/stow" --target="$HOME" rofi hypr
+```
+
+Test the menus:
+
+```bash
+~/.config/hypr/scripts/launcher.sh
+~/.config/hypr/scripts/clipboard-menu.sh
+~/.config/hypr/scripts/power-menu.sh
+~/.config/hypr/scripts/window-menu.sh
+```
+
+Rofi provides the temporary app launcher, clipboard menu, power menu, and window switcher. It uses the same graphite, muted teal, sage, and amber palette as Waybar, but the palette is duplicated in `themes/shared.rasi` until `scripts/apply-theme.sh` can generate/import Rasi tokens automatically.
+
+Power actions are guarded: reboot and shutdown require confirmation. Rofi remains temporary for some UI flows until a future custom Quickshell shell exists.
 
 ## Health Check
 

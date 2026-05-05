@@ -8,6 +8,9 @@ HYPR_CONFIG="$HYPR_CONFIG_HOME"
 WAYBAR_SOURCE="$REPO_ROOT/stow/waybar/.config/waybar"
 WAYBAR_CONFIG_HOME="$HOME/.config/waybar"
 WAYBAR_CONFIG="$WAYBAR_CONFIG_HOME"
+ROFI_SOURCE="$REPO_ROOT/stow/rofi/.config/rofi"
+ROFI_CONFIG_HOME="$HOME/.config/rofi"
+ROFI_CONFIG="$ROFI_CONFIG_HOME"
 
 if [[ ! -f "$HYPR_CONFIG_HOME/hyprland.conf" && -d "$HYPR_SOURCE" ]]; then
   HYPR_CONFIG="$HYPR_SOURCE"
@@ -15,6 +18,10 @@ fi
 
 if [[ ! -f "$WAYBAR_CONFIG_HOME/config.jsonc" && -d "$WAYBAR_SOURCE" ]]; then
   WAYBAR_CONFIG="$WAYBAR_SOURCE"
+fi
+
+if [[ ! -f "$ROFI_CONFIG_HOME/config.rasi" && -d "$ROFI_SOURCE" ]]; then
+  ROFI_CONFIG="$ROFI_SOURCE"
 fi
 
 ok() {
@@ -149,6 +156,7 @@ check_executable "$HYPR_CONFIG/scripts/screenshot-full.sh"
 check_executable "$HYPR_CONFIG/scripts/clipboard-menu.sh"
 check_executable "$HYPR_CONFIG/scripts/power-menu.sh"
 check_executable "$HYPR_CONFIG/scripts/launcher.sh"
+check_executable "$HYPR_CONFIG/scripts/window-menu.sh"
 check_executable "$HYPR_CONFIG/scripts/reload.sh"
 check_executable "$HYPR_CONFIG/scripts/toggle-night-mode.sh"
 check_executable "$HYPR_CONFIG/scripts/wallpaper.sh"
@@ -172,6 +180,22 @@ check_executable "$WAYBAR_CONFIG/modules/power.sh"
 check_executable "$WAYBAR_CONFIG/modules/clipboard.sh"
 check_executable "$WAYBAR_CONFIG/modules/network.sh"
 check_executable "$WAYBAR_CONFIG/modules/updates.sh"
+
+printf '\nRofi config\n'
+printf '%s\n' '-----------'
+
+if [[ "$ROFI_CONFIG" == "$ROFI_SOURCE" ]]; then
+  warn "Rofi module is not stowed to $ROFI_CONFIG_HOME; checking repository source files instead"
+  warn "Run: stow --restow --dir=\"\$PWD/stow\" --target=\"\$HOME\" rofi hypr"
+fi
+
+check_file "$ROFI_CONFIG/config.rasi"
+check_file "$ROFI_CONFIG/themes/shared.rasi"
+check_file "$ROFI_CONFIG/themes/launcher.rasi"
+check_file "$ROFI_CONFIG/themes/power-menu.rasi"
+check_file "$ROFI_CONFIG/themes/clipboard.rasi"
+check_file "$ROFI_CONFIG/themes/window.rasi"
+check_file "$ROFI_CONFIG/README.md"
 
 printf '\nHealth check finished. Warnings are expected before package installation.\n'
 exit 0

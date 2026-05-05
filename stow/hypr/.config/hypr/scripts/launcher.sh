@@ -2,6 +2,9 @@
 set -euo pipefail
 
 # rofi-wayland provides the rofi binary on Arch.
-# Future prompt: add the project launcher theme here.
-rofi -show drun
+if ! command -v rofi >/dev/null 2>&1; then
+  printf 'rofi is not installed. Install rofi-wayland.\n' >&2
+  exit 1
+fi
 
+rofi -show drun -theme "$HOME/.config/rofi/themes/launcher.rasi"

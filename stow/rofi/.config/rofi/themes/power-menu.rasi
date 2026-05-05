@@ -1,0 +1,39 @@
+@import "shared.rasi"
+
+window {
+    width: 22%;
+    location: center;
+    anchor: center;
+}
+
+mainbox {
+    padding: 12px;
+}
+
+inputbar {
+    children: [ prompt ];
+    background-color: transparent;
+    border: 0;
+    padding: 2px 4px 4px 4px;
+}
+
+prompt {
+    text-color: @amber;
+}
+
+listview {
+    lines: 5;
+}
+
+element {
+    padding: 8px 10px;
+}
+
+element selected.normal {
+    background-color: @accent-muted;
+}
+
+element-text {
+    horizontal-align: 0.5;
+}
+

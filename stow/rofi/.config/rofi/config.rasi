@@ -1,0 +1,19 @@
+configuration {
+    modi: "drun,window,run";
+    show-icons: true;
+    icon-theme: "Papirus-Dark";
+    drun-display-format: "{icon} {name}";
+    display-drun: "launch";
+    display-window: "windows";
+    display-run: "run";
+    matching: "fuzzy";
+    sort: true;
+    case-sensitive: false;
+    cycle: true;
+    scroll-method: 0;
+    sidebar-mode: false;
+    hover-select: false;
+    kb-cancel: "Escape,Control+g";
+}
+
+@theme "~/.config/rofi/themes/launcher.rasi"

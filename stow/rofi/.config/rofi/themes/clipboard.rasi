@@ -1,0 +1,24 @@
+@import "shared.rasi"
+
+window {
+    width: 52%;
+    location: center;
+    anchor: center;
+}
+
+listview {
+    lines: 12;
+}
+
+element {
+    padding: 6px 9px;
+}
+
+element-text {
+    text-color: inherit;
+}
+
+entry {
+    placeholder: "filter clipboard";
+}
+

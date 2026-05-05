@@ -1,0 +1,22 @@
+@import "shared.rasi"
+
+window {
+    width: 40%;
+    location: center;
+    anchor: center;
+}
+
+listview {
+    lines: 9;
+    columns: 1;
+}
+
+prompt {
+    enabled: true;
+    text-color: @amber;
+}
+
+element {
+    padding: 7px 10px;
+}
+

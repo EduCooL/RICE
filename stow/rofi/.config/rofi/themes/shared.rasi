@@ -1,0 +1,135 @@
+/*
+ * Shared Rofi theme tokens.
+ * TODO: generate this from themes/colors.rasi through scripts/apply-theme.sh.
+ */
+* {
+    background: transparent;
+    base-00: #0E1312;
+    base-01: #151A19;
+    base-02: #1E2322;
+    base-03: #2A302F;
+
+    surface: rgba(21, 26, 25, 88%);
+    surface-soft: rgba(30, 35, 34, 82%);
+    surface-hover: rgba(42, 48, 47, 84%);
+
+    text: #D8E1DC;
+    text-muted: #A7B9B1;
+    text-dim: #73837D;
+
+    accent: #6E8D88;
+    accent-soft: #516F66;
+    accent-muted: rgba(81, 111, 102, 46%);
+    amber: #B89A6A;
+    danger: #D1786C;
+    border: rgba(167, 185, 177, 18%);
+    border-active: rgba(167, 185, 177, 42%);
+
+    font: "JetBrainsMono Nerd Font 11";
+    radius: 15px;
+    spacing: 8px;
+}
+
+window {
+    transparency: "real";
+    background-color: @background;
+    text-color: @text;
+}
+
+mainbox {
+    background-color: @surface;
+    border: 1px;
+    border-color: @border;
+    border-radius: @radius;
+    padding: 14px;
+    spacing: 10px;
+}
+
+inputbar {
+    background-color: rgba(14, 19, 18, 64%);
+    border: 1px;
+    border-color: @border;
+    border-radius: 12px;
+    padding: 8px 10px;
+    spacing: 8px;
+    text-color: @text;
+}
+
+prompt {
+    text-color: @amber;
+    padding: 0 6px 0 0;
+}
+
+entry {
+    placeholder: "search";
+    placeholder-color: @text-dim;
+    text-color: @text;
+}
+
+listview {
+    background-color: transparent;
+    border: 0;
+    spacing: 4px;
+    fixed-height: true;
+    scrollbar: false;
+}
+
+element {
+    background-color: transparent;
+    border-radius: 11px;
+    padding: 7px 9px;
+    spacing: 9px;
+    text-color: @text-muted;
+}
+
+element-icon {
+    size: 1.15em;
+    padding: 0 2px 0 0;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    vertical-align: 0.5;
+}
+
+element normal.normal {
+    background-color: transparent;
+    text-color: @text-muted;
+}
+
+element alternate.normal {
+    background-color: transparent;
+    text-color: @text-muted;
+}
+
+element selected.normal {
+    background-color: @accent-muted;
+    text-color: @text;
+    border: 1px;
+    border-color: @border-active;
+}
+
+element selected.active,
+element selected.urgent {
+    background-color: @accent-muted;
+    text-color: @text;
+}
+
+element urgent.normal {
+    text-color: @danger;
+}
+
+message {
+    background-color: @surface-soft;
+    border: 1px;
+    border-color: @border;
+    border-radius: 12px;
+    padding: 8px;
+}
+
+textbox {
+    background-color: transparent;
+    text-color: @text-muted;
+}
+
