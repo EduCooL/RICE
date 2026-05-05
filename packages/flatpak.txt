@@ -1,0 +1,7 @@
+# Optional Flatpak packages.
+# Install manually after Flatpak is configured.
+# This repository does not install Flatpak packages automatically.
+
+com.spotify.Client
+org.telegram.desktop
+md.obsidian.Obsidian

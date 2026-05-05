@@ -1,0 +1,22 @@
+{
+  "base_00": "#0E1312",
+  "base_01": "#151A19",
+  "base_02": "#1E2322",
+  "base_03": "#2A302F",
+  "text_00": "#D8E1DC",
+  "text_01": "#A7B9B1",
+  "text_02": "#73837D",
+  "teal_00": "#394F4B",
+  "teal_01": "#516F66",
+  "teal_02": "#6E8D88",
+  "teal_03": "#A7B9B1",
+  "amber_00": "#B89A6A",
+  "amber_01": "#E6C99A",
+  "danger": "#D1786C",
+  "warning": "#D8A657",
+  "success": "#8BAE8B",
+  "info": "#7FA6A0",
+  "border": "rgba(167, 185, 177, 0.18)",
+  "border_active": "rgba(167, 185, 177, 0.42)",
+  "shadow": "rgba(0, 0, 0, 0.45)"
+}

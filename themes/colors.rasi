@@ -1,0 +1,27 @@
+* {
+    base-00: #0E1312;
+    base-01: #151A19;
+    base-02: #1E2322;
+    base-03: #2A302F;
+
+    text-00: #D8E1DC;
+    text-01: #A7B9B1;
+    text-02: #73837D;
+
+    teal-00: #394F4B;
+    teal-01: #516F66;
+    teal-02: #6E8D88;
+    teal-03: #A7B9B1;
+
+    amber-00: #B89A6A;
+    amber-01: #E6C99A;
+
+    danger: #D1786C;
+    warning: #D8A657;
+    success: #8BAE8B;
+    info: #7FA6A0;
+
+    border: rgba(167, 185, 177, 0.18);
+    border-active: rgba(167, 185, 177, 0.42);
+    shadow: rgba(0, 0, 0, 0.45);
+}

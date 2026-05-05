@@ -1,0 +1,20 @@
+# Browser
+firefox
+
+# Development
+docker
+docker-compose
+postgresql
+redis
+nodejs
+npm
+pnpm
+python
+python-pip
+uv
+
+# Media / utilities
+mpv
+imv
+zathura
+zathura-pdf-mupdf

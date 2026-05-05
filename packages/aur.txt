@@ -1,0 +1,5 @@
+# Optional AUR packages.
+# Install manually or with an AUR helper such as paru.
+# This repository does not install AUR packages automatically.
+
+visual-studio-code-bin
