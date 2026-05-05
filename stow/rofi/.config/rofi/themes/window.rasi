@@ -1,17 +1,27 @@
 @import "shared.rasi"
 
 window {
-    width: 38%;
+    width: 36%;
     location: center;
     anchor: center;
 }
 
-listview {
-    lines: 9;
+mainbox {
+    padding: 10px;
+}
+
+prompt {
+    content: "windows";
+    text-color: @text-dim;
 }
 
 entry {
-    placeholder: "switch window";
+    placeholder: "Switch window";
+}
+
+listview {
+    lines: 8;
+    columns: 1;
 }
 
 element {

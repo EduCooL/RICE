@@ -607,6 +607,15 @@ This pass fixes the first failed visual direction: removes bright cyan/light-blu
 
 This pass fixes concrete mismatches seen in real screenshots: removes the remaining cyan/light-blue treatment, darkens Rofi inputs, improves clipboard/power menu behavior, clarifies GTK/Qt manual integration, and reinforces the wallpaper requirements needed for the intended cozy rainy look.
 
+Forensic reset scope:
+
+- Waybar CSS was rebuilt as dark graphite island modules instead of a tinted strip.
+- Rofi shared and mode themes were rebuilt as compact command palettes with dark inputs.
+- Clipboard history exits cleanly when empty instead of opening a large blank panel.
+- SwayNC CSS was rebuilt as a compact right-side graphite glass panel.
+- GTK CSS now darkens conservative baseline controls used by Thunar and theme tools.
+- Qt config now consistently prefers Kvantum and portal dialogs, with manual `qt5ct`/`qt6ct` verification still required.
+
 Aligned areas:
 
 - shared `surface_*` semantic tokens across theme files

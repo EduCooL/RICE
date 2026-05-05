@@ -1,6 +1,17 @@
-/* Minimal GTK3 polish. Keep app-specific hacks out of this file. */
+/* Stage-2 forensic GTK3 baseline.
+ * Conservative selectors only: darken Thunar/nwg-look style surfaces without
+ * pretending GTK apps can fully match the custom shell.
+ */
+
+* {
+  color: #D7DFDA;
+  caret-color: #6F9189;
+  -gtk-icon-style: regular;
+}
+
 window,
-dialog {
+dialog,
+.background {
   background-color: #101716;
   color: #D7DFDA;
 }
@@ -8,19 +19,30 @@ dialog {
 headerbar,
 toolbar,
 menubar,
-notebook > header {
+notebook > header,
+.titlebar {
   background-color: #0B1110;
   color: #D7DFDA;
   border-color: rgba(167, 185, 177, 0.14);
+  box-shadow: none;
 }
 
 paned,
+viewport,
+scrolledwindow,
 treeview,
 list,
 sidebar,
 .sidebar {
   background-color: #101716;
   color: #AEBDB6;
+}
+
+treeview:hover,
+list row:hover,
+sidebar row:hover,
+.sidebar row:hover {
+  background-color: rgba(49, 72, 68, 0.30);
 }
 
 treeview:selected,
@@ -31,20 +53,44 @@ sidebar row:selected,
   color: #D7DFDA;
 }
 
-popover,
-menu,
-.menu {
-  background-color: #101716;
+entry,
+searchentry {
+  background-color: #0B1110;
   color: #D7DFDA;
-  border-radius: 12px;
   border: 1px solid rgba(167, 185, 177, 0.14);
+  border-radius: 8px;
 }
 
 button {
   background-color: rgba(23, 32, 30, 0.84);
   color: #D7DFDA;
+  border: 1px solid rgba(167, 185, 177, 0.14);
   border-radius: 8px;
-  border-color: rgba(167, 185, 177, 0.14);
+  box-shadow: none;
+}
+
+button:hover {
+  background-color: rgba(66, 99, 93, 0.30);
+  border-color: rgba(167, 185, 177, 0.30);
+}
+
+popover,
+menu,
+.menu,
+tooltip {
+  background-color: #101716;
+  color: #D7DFDA;
+  border: 1px solid rgba(167, 185, 177, 0.14);
+  border-radius: 12px;
+}
+
+separator {
+  background-color: rgba(167, 185, 177, 0.14);
+}
+
+scrollbar slider {
+  background-color: rgba(167, 185, 177, 0.24);
+  border-radius: 999px;
 }
 
 selection {

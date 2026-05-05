@@ -10,18 +10,38 @@ window {
     anchor: center;
 }
 
+mainbox {
+    padding: 10px;
+}
+
+inputbar {
+    children: [ prompt, entry ];
+}
+
+prompt {
+    content: "clip";
+    text-color: @text-dim;
+}
+
+entry {
+    placeholder: "Filter clipboard history";
+}
+
 listview {
     lines: 10;
+    columns: 1;
 }
 
 element {
     padding: 7px 9px;
 }
 
-element-text {
-    text-color: inherit;
+element-icon {
+    enabled: false;
+    size: 0px;
+    padding: 0px;
 }
 
-entry {
-    placeholder: "filter clipboard";
+element-text {
+    font: @mono-font;
 }

@@ -1,5 +1,14 @@
-/* Minimal GTK4 polish. Libadwaita apps should remain mostly app-controlled. */
-window {
+/* Stage-2 forensic GTK4 baseline.
+ * Keep this restrained: libadwaita apps intentionally control most details.
+ */
+
+* {
+  color: #D7DFDA;
+  caret-color: #6F9189;
+}
+
+window,
+.background {
   background-color: #101716;
   color: #D7DFDA;
 }
@@ -7,19 +16,33 @@ window {
 headerbar,
 popover,
 dialog,
-menu {
+menu,
+tooltip {
   background-color: #101716;
   color: #D7DFDA;
   border-color: rgba(167, 185, 177, 0.14);
 }
 
-popover,
-dialog {
-  border-radius: 12px;
+entry,
+searchentry {
+  background-color: #0B1110;
+  color: #D7DFDA;
+  border-radius: 8px;
 }
 
 button {
+  background-color: rgba(23, 32, 30, 0.84);
+  color: #D7DFDA;
   border-radius: 8px;
+}
+
+button:hover {
+  background-color: rgba(66, 99, 93, 0.30);
+}
+
+popover,
+dialog {
+  border-radius: 12px;
 }
 
 selection {

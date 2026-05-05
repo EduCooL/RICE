@@ -12,6 +12,7 @@ window {
 
 mainbox {
     padding: 10px;
+    spacing: 7px;
 }
 
 inputbar {
@@ -22,15 +23,17 @@ inputbar {
 }
 
 prompt {
+    content: "power";
     text-color: @text-dim;
 }
 
 listview {
     lines: 5;
+    fixed-height: true;
 }
 
 element {
-    padding: 8px;
+    padding: 8px 9px;
 }
 
 element-icon {
@@ -39,10 +42,11 @@ element-icon {
     padding: 0px;
 }
 
-element selected.normal {
-    background-color: @sage-muted;
-}
-
 element-text {
     horizontal-align: 0.5;
+}
+
+element selected.normal {
+    background-color: @sage-row;
+    border-color: @border;
 }

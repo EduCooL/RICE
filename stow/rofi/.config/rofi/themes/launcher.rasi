@@ -6,16 +6,32 @@ window {
     anchor: center;
 }
 
-listview {
-    lines: 9;
-    columns: 1;
+mainbox {
+    padding: 10px;
+}
+
+inputbar {
+    children: [ prompt, entry ];
 }
 
 prompt {
-    enabled: true;
+    content: "launch";
     text-color: @text-dim;
+}
+
+entry {
+    placeholder: "Search applications";
+}
+
+listview {
+    lines: 8;
+    columns: 1;
 }
 
 element {
     padding: 7px 9px;
+}
+
+element-icon {
+    size: 1.05em;
 }

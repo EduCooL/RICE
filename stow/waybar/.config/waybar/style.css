@@ -1,12 +1,10 @@
+/* Stage-2 forensic reset: graphite glass top bar, no bright color cast. */
+
 /* Palette */
-/* TODO: Generate or import these tokens from themes/colors.css via scripts/apply-theme.sh. */
 @define-color base_00 #0B1110;
 @define-color base_01 #101716;
 @define-color base_02 #17201E;
 @define-color base_03 #202B28;
-@define-color surface_00 rgba(11, 17, 16, 0.72);
-@define-color surface_01 rgba(16, 23, 22, 0.78);
-@define-color surface_02 rgba(23, 32, 30, 0.84);
 @define-color text_00 #D7DFDA;
 @define-color text_01 #AEBDB6;
 @define-color text_02 #7D8D86;
@@ -15,31 +13,28 @@
 @define-color sage_02 #6F9189;
 @define-color sage_03 #A7B9B1;
 @define-color amber_00 #B7925F;
-@define-color amber_01 #E6C48F;
 @define-color danger #C87469;
 @define-color warning #D1A15F;
 @define-color success #8AAA7F;
-@define-color info #7FA6A0;
 @define-color border rgba(167, 185, 177, 0.14);
 @define-color border_strong rgba(167, 185, 177, 0.30);
-@define-color shadow rgba(0, 0, 0, 0.55);
 
 /* Base */
 * {
-  border: none;
-  border-radius: 0;
+  all: unset;
   min-height: 0;
+  border: 0;
   font-family: "Inter", "JetBrainsMono Nerd Font", sans-serif;
   font-size: 11px;
   font-weight: 500;
+  color: @text_01;
 }
 
 window#waybar {
   background: transparent;
-  color: @text_00;
 }
 
-/* Shared module cards */
+/* Dark island modules */
 #custom-launcher,
 #workspaces,
 #window,
@@ -51,13 +46,23 @@ window#waybar {
 #custom-clipboard,
 #clock,
 #custom-power {
-  margin: 3px 0;
+  margin-top: 3px;
+  margin-bottom: 3px;
   padding: 2px 8px;
-  background: rgba(11, 17, 16, 0.72);
+  background: rgba(11, 17, 16, 0.76);
   border: 1px solid @border;
   border-radius: 10px;
-  color: @text_01;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.24);
+}
+
+#custom-launcher,
+#workspaces {
+  margin-left: 0;
+}
+
+#clock,
+#custom-power {
+  margin-right: 0;
 }
 
 #custom-launcher:hover,
@@ -65,66 +70,90 @@ window#waybar {
 #custom-power:hover,
 #network:hover,
 #pulseaudio:hover,
+#battery:hover,
 #clock:hover {
-  background: rgba(16, 23, 22, 0.82);
+  background: rgba(16, 23, 22, 0.84);
   border-color: @border_strong;
   color: @text_00;
 }
 
+/* Left cluster */
 #custom-launcher {
-  padding: 2px 9px;
-  color: @sage_03;
-}
-
-#custom-power {
+  padding-left: 10px;
+  padding-right: 10px;
   color: @text_01;
 }
 
-/* Workspaces */
+#custom-launcher:hover {
+  color: @sage_03;
+}
+
+/* Workspace pills */
 #workspaces {
-  padding: 2px 5px;
+  padding: 2px 4px;
+  background: rgba(11, 17, 16, 0.66);
 }
 
 #workspaces button {
+  min-width: 18px;
   margin: 0 1px;
-  padding: 1px 7px;
-  min-width: 14px;
+  padding: 1px 6px;
   border-radius: 999px;
   background: transparent;
   color: @text_02;
 }
 
 #workspaces button:hover {
-  background: rgba(49, 72, 68, 0.30);
+  background: rgba(49, 72, 68, 0.34);
   color: @text_01;
 }
 
 #workspaces button.active {
-  background: #42635D;
+  background: rgba(66, 99, 93, 0.86);
   color: @text_00;
-  border: 1px solid rgba(167, 185, 177, 0.18);
+  border: 1px solid rgba(167, 185, 177, 0.16);
 }
 
 #workspaces button.urgent {
-  background: rgba(200, 116, 105, 0.22);
+  background: rgba(200, 116, 105, 0.20);
   color: @danger;
 }
 
-/* Window title */
+/* Center title */
 #window {
-  padding-left: 10px;
-  padding-right: 10px;
-  color: @text_01;
-  background: rgba(11, 17, 16, 0.50);
+  padding-left: 12px;
+  padding-right: 12px;
+  background: rgba(11, 17, 16, 0.52);
+  color: @text_02;
+  font-weight: 500;
 }
 
 window#waybar.empty #window {
+  color: rgba(125, 141, 134, 0.70);
+}
+
+/* Right cluster */
+#tray {
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+#tray menu {
+  background: rgba(11, 17, 16, 0.96);
+  border: 1px solid @border;
+  border-radius: 10px;
+  color: @text_00;
+}
+
+#custom-updates {
   color: @text_02;
 }
 
-/* System modules */
-#custom-updates {
-  color: @text_02;
+#network,
+#pulseaudio,
+#battery,
+#custom-clipboard {
+  color: @text_01;
 }
 
 #network.disconnected,
@@ -137,28 +166,6 @@ window#waybar.empty #window {
   color: @success;
 }
 
-#custom-clipboard {
-  color: @text_01;
-}
-
-#clock {
-  color: @text_00;
-}
-
-/* Tray */
-#tray {
-  padding-left: 7px;
-  padding-right: 7px;
-}
-
-#tray menu {
-  background: @base_01;
-  border: 1px solid @border;
-  border-radius: 12px;
-  color: @text_00;
-}
-
-/* Critical / warning states */
 #battery.warning:not(.charging) {
   color: @warning;
 }
@@ -167,12 +174,25 @@ window#waybar.empty #window {
   color: @danger;
 }
 
-/* Tooltips */
-tooltip {
-  background: rgba(11, 17, 16, 0.94);
-  border: 1px solid @border_strong;
-  border-radius: 12px;
+#clock {
   color: @text_00;
+  font-weight: 600;
+}
+
+#custom-power {
+  color: @text_02;
+}
+
+#custom-power:hover {
+  color: @amber_00;
+}
+
+/* Tooltip */
+tooltip {
+  background: rgba(11, 17, 16, 0.96);
+  border: 1px solid @border_strong;
+  border-radius: 10px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.34);
 }
 
 tooltip label {
