@@ -2,8 +2,6 @@
 firefox
 
 # Development
-docker
-docker-compose
 postgresql
 redis
 nodejs

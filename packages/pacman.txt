@@ -22,6 +22,7 @@ zsh
 starship
 git
 github-cli
+openssh
 neovim
 fzf
 ripgrep
@@ -33,6 +34,8 @@ btop
 fastfetch
 yazi
 tmux
+docker
+docker-compose
 pipewire
 pipewire-pulse
 wireplumber

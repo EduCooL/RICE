@@ -20,6 +20,27 @@ The final system must feel like a coherent custom desktop environment, not a ran
 
 This project is not about making a screenshot-only rice. It must be a daily usable working environment for coding, browsing, university/VKR work, terminal usage, Git, Docker/PostgreSQL development, notes, music, communication, and general desktop use.
 
+## Project stages
+
+Build the rice in three explicit stages:
+
+```text
+Stage 1 — functional MVP
+Goal: components work, launch, reload, stow safely, and can be maintained on a daily system.
+
+Stage 2 — visual unification
+Goal: align palette, radius, padding, borders, opacity, blur, typography, and spacing across components.
+
+Stage 3 — polished rice / possible Quickshell
+Goal: custom wallpaper, polished UX flows, dashboard-like behavior, and a possible Quickshell prototype.
+```
+
+Stage 1 prioritizes reliable configs, safe scripts, package manifests, health checks, and practical documentation over perfect visuals.
+
+Stage 2 may refine the existing Hyprland, Waybar, Rofi, SwayNC, Kitty, Hyprlock, GTK, and Qt styling so the desktop feels more coherent.
+
+Stage 3 is the earliest point where custom shell/dashboard work should be explored. Do not implement or replace working Stage-1 components with Quickshell unless the user explicitly asks for it.
+
 ## Core design direction
 
 Use the following concept as the source of truth:

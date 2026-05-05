@@ -23,6 +23,32 @@ Planned core stack:
 
 Quickshell is a future direction and is not implemented yet.
 
+## Current Stage
+
+Stage 1 — functional MVP.
+
+The goal of this stage is reliability: install packages, stow modules, reload Hyprland, launch core tools, recover from conflicts, and keep the repo maintainable. Visual unification comes next.
+
+## Fresh Install Flow
+
+From a fresh Arch install with this repo cloned:
+
+```bash
+./scripts/install-packages.sh
+./scripts/backup-existing-configs.sh
+./scripts/stow-all.sh
+./scripts/check-health.sh
+hyprctl reload
+```
+
+Set a local wallpaper:
+
+```bash
+mkdir -p ~/Pictures/Wallpapers
+ln -sf /path/to/my-wallpaper.png ~/Pictures/Wallpapers/current
+~/.config/hypr/scripts/wallpaper.sh
+```
+
 ## Repository Layout
 
 - `packages/` contains package lists split by package source and optionality.
@@ -41,6 +67,15 @@ Run from the repository root:
 
 The installer does not install packages automatically. It checks for `stow`, backs up conflicting user configs, stows current modules, and runs a health report.
 
+For explicit Stage-1 apply steps, prefer:
+
+```bash
+./scripts/backup-existing-configs.sh
+./scripts/stow-all.sh
+./scripts/check-health.sh
+hyprctl reload
+```
+
 ## Package Installation
 
 To review and install the main Pacman packages:
@@ -55,6 +90,8 @@ AUR and Flatpak packages are listed separately and are optional:
 
 - `packages/aur.txt`
 - `packages/flatpak.txt`
+
+NVIDIA-specific packages are not installed automatically. Keep GPU notes and driver decisions machine-specific.
 
 ## Stow Usage
 
@@ -147,6 +184,14 @@ The planned default path for configs is:
 
 Large wallpaper binaries are not committed by default.
 
+Apply/reload the wallpaper:
+
+```bash
+~/.config/hypr/scripts/wallpaper.sh
+```
+
+Hyprlock uses a blurred screenshot so it still works if the wallpaper path is missing.
+
 ## Hyprland MVP
 
 The Hyprland module lives at:
@@ -210,7 +255,7 @@ Known Hyprland MVP limitations:
 - wallpaper files are local-only and not committed
 - Quickshell is intentionally not implemented yet
 
-Next step: implement Rofi launcher, power menu, and clipboard menu themes according to the cozy dark reference.
+Stage-1 status: Hyprland is functional and integrated with Waybar, Rofi, SwayNC, Kitty, shell, GTK/Qt, XDG, and Thunar modules.
 
 ## Waybar MVP
 
@@ -405,6 +450,118 @@ Run:
 ```
 
 The report warns about missing commands or inactive services but exits with status `0`.
+
+## Updating From GitHub
+
+Safe update:
+
+```bash
+./scripts/dotpull.sh
+```
+
+If local changes exist, the script refuses to pull. Inspect them:
+
+```bash
+./scripts/dotstatus.sh
+```
+
+Options when Git says local changes would be overwritten:
+
+- commit local changes with `git add` and `git commit`;
+- stash and reapply with `./scripts/dotpull.sh --stash`;
+- discard individual files manually with `git restore <file>` only after review.
+
+See `docs/DOTFILES_MAINTENANCE.md`.
+
+## Troubleshooting
+
+Hyprland reload errors:
+
+```bash
+hyprctl reload
+```
+
+Read the exact error, fix the named file, then reload again.
+
+Stow conflicts:
+
+```bash
+./scripts/backup-existing-configs.sh
+./scripts/stow-all.sh
+```
+
+Missing `~/.config/hypr/scripts/*.sh`:
+
+```bash
+stow --restow --dir="$PWD/stow" --target="$HOME" hypr
+chmod +x ~/.config/hypr/scripts/*.sh
+```
+
+Waybar not starting:
+
+```bash
+waybar -c ~/.config/waybar/config.jsonc -s ~/.config/waybar/style.css
+```
+
+Rofi not themed:
+
+```bash
+stow --restow --dir="$PWD/stow" --target="$HOME" rofi hypr
+~/.config/hypr/scripts/launcher.sh
+```
+
+SwayNC not restarting:
+
+```bash
+pkill swaync
+swaync &
+swaync-client --reload-css
+```
+
+Hyprlock failing:
+
+```bash
+hyprlock -c ~/.config/hypr/hyprlock.conf
+```
+
+Wallpaper missing:
+
+```bash
+mkdir -p ~/Pictures/Wallpapers
+ln -sf /path/to/my-wallpaper.png ~/Pictures/Wallpapers/current
+~/.config/hypr/scripts/wallpaper.sh
+```
+
+Docker permission denied:
+
+```bash
+sudo systemctl enable --now docker
+sudo usermod -aG docker "$USER"
+```
+
+Log out and back in.
+
+PostgreSQL port `5432` busy:
+
+```bash
+ss -ltnp | grep ':5432'
+docker ps
+```
+
+See `docs/DOCKER_POSTGRES.md`.
+
+## Known Limitations
+
+- Stage 1 prioritizes working components over perfect visual alignment.
+- The Kvantum theme is a minimal local stub.
+- Wallpaper assets are user-provided and not committed.
+- Quickshell is not part of Stage 1.
+
+## Next Stage
+
+Stage 2 — visual unification.
+
+Next work should align palette, spacing, radius, borders, opacity, blur, and typography across Hyprland, Waybar, Rofi, SwayNC, Kitty, Hyprlock, GTK, and Qt.
 
 ## Roadmap
 
