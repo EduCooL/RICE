@@ -1,7 +1,7 @@
 @import "shared.rasi"
 
 window {
-    width: 44%;
+    width: 38%;
     location: center;
     anchor: center;
 }
@@ -15,5 +15,5 @@ entry {
 }
 
 element {
-    padding: 6px 9px;
+    padding: 7px 9px;
 }

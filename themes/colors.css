@@ -1,39 +1,39 @@
 :root {
-  --base-00: #0E1312;
-  --base-01: #151A19;
-  --base-02: #1E2322;
-  --base-03: #2A302F;
+  /* Refined Stage-2 cozy rainy palette */
+  --base-00: #0B1110;
+  --base-01: #101716;
+  --base-02: #17201E;
+  --base-03: #202B28;
 
-  --surface-00: rgba(14, 19, 18, 0.72);
-  --surface-01: rgba(21, 26, 25, 0.78);
-  --surface-02: rgba(30, 35, 34, 0.82);
+  --surface-00: rgba(11, 17, 16, 0.72);
+  --surface-01: rgba(16, 23, 22, 0.78);
+  --surface-02: rgba(23, 32, 30, 0.84);
 
-  --text-00: #D8E1DC;
-  --text-01: #A7B9B1;
-  --text-02: #73837D;
+  --text-00: #D7DFDA;
+  --text-01: #AEBDB6;
+  --text-02: #7D8D86;
 
-  --teal-00: #394F4B;
-  --teal-01: #516F66;
-  --teal-02: #6E8D88;
-  --teal-03: #A7B9B1;
+  --sage-00: #314844;
+  --sage-01: #42635D;
+  --sage-02: #6F9189;
+  --sage-03: #A7B9B1;
 
-  --amber-00: #B89A6A;
-  --amber-01: #E6C99A;
+  --amber-00: #B7925F;
+  --amber-01: #E6C48F;
 
-  --danger: #D1786C;
-  --warning: #D8A657;
-  --success: #8BAE8B;
+  --danger: #C87469;
+  --warning: #D1A15F;
+  --success: #8AAA7F;
   --info: #7FA6A0;
 
-  --border: rgba(167, 185, 177, 0.18);
-  --border-active: rgba(167, 185, 177, 0.42);
-  --shadow: rgba(0, 0, 0, 0.45);
+  --border: rgba(167, 185, 177, 0.14);
+  --border-strong: rgba(167, 185, 177, 0.30);
+  --shadow: rgba(0, 0, 0, 0.55);
 
-  /* Stage 2 design constants */
   --radius-sm: 8px;
-  --radius-md: 12px;
+  --radius-md: 10px;
   --radius-lg: 14px;
-  --radius-xl: 16px;
+  --radius-pill: 999px;
   --padding-xs: 4px;
   --padding-sm: 6px;
   --padding-md: 8px;

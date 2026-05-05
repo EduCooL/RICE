@@ -1,9 +1,9 @@
 <svg width="96" height="96" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <style>
-      .base { fill: #151A19; stroke: #A7B9B1; stroke-opacity: 0.18; }
-      .accent { fill: #516F66; }
-      .text { fill: #D8E1DC; }
+      .base { fill: #101716; stroke: #AEBDB6; stroke-opacity: 0.18; }
+      .accent { fill: #42635D; }
+      .text { fill: #D7DFDA; }
     </style>
   </defs>
   <rect id="base" class="base" x="8" y="8" width="80" height="80" rx="12"/>

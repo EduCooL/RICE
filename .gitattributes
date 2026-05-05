@@ -5,8 +5,10 @@
 *.css text eol=lf
 *.qml text eol=lf
 *.json text eol=lf
+*.jsonc text eol=lf
 *.ini text eol=lf
 *.toml text eol=lf
+*.kvconfig text eol=lf
 *.xml text eol=lf
 *.svg text eol=lf
 *.md text eol=lf

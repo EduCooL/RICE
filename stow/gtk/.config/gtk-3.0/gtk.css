@@ -1,15 +1,15 @@
 /* Minimal GTK3 polish. Keep app-specific hacks out of this file. */
 window,
 dialog {
-  background-color: #151A19;
-  color: #D8E1DC;
+  background-color: #101716;
+  color: #D7DFDA;
 }
 
 popover,
 menu,
 .menu {
   border-radius: 12px;
-  border: 1px solid rgba(167, 185, 177, 0.18);
+  border: 1px solid rgba(167, 185, 177, 0.14);
 }
 
 button {
@@ -17,6 +17,6 @@ button {
 }
 
 selection {
-  background-color: #394F4B;
-  color: #D8E1DC;
+  background-color: #314844;
+  color: #D7DFDA;
 }

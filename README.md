@@ -567,6 +567,10 @@ Next work should align palette, spacing, radius, borders, opacity, blur, and typ
 
 This pass aligns the existing Stage-1 components without adding new major features.
 
+## Stage 2 visual correction
+
+This pass corrected the first visual unification attempt to better match the cozy rainy reference: graphite/green-black surfaces, sage active states, warm amber highlights, compact spacing, subtle borders, and consistent radius.
+
 Aligned areas:
 
 - shared `surface_*` semantic tokens across theme files

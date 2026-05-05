@@ -1,28 +1,28 @@
 /* Palette */
 /* TODO: Generate or import these tokens from themes/colors.css via scripts/apply-theme.sh. */
-@define-color base_00 #0E1312;
-@define-color base_01 #151A19;
-@define-color base_02 #1E2322;
-@define-color base_03 #2A302F;
-@define-color surface_00 rgba(14, 19, 18, 0.72);
-@define-color surface_01 rgba(21, 26, 25, 0.78);
-@define-color surface_02 rgba(30, 35, 34, 0.82);
-@define-color text_00 #D8E1DC;
-@define-color text_01 #A7B9B1;
-@define-color text_02 #73837D;
-@define-color teal_00 #394F4B;
-@define-color teal_01 #516F66;
-@define-color teal_02 #6E8D88;
-@define-color amber_00 #B89A6A;
-@define-color danger #D1786C;
-@define-color warning #D8A657;
-@define-color success #8BAE8B;
+@define-color base_00 #0B1110;
+@define-color base_01 #101716;
+@define-color base_02 #17201E;
+@define-color base_03 #202B28;
+@define-color surface_00 rgba(11, 17, 16, 0.72);
+@define-color surface_01 rgba(16, 23, 22, 0.78);
+@define-color surface_02 rgba(23, 32, 30, 0.84);
+@define-color text_00 #D7DFDA;
+@define-color text_01 #AEBDB6;
+@define-color text_02 #7D8D86;
+@define-color sage_00 #314844;
+@define-color sage_01 #42635D;
+@define-color sage_02 #6F9189;
+@define-color sage_03 #A7B9B1;
+@define-color amber_00 #B7925F;
+@define-color amber_01 #E6C48F;
+@define-color danger #C87469;
+@define-color warning #D1A15F;
+@define-color success #8AAA7F;
 @define-color info #7FA6A0;
-@define-color border rgba(167, 185, 177, 0.18);
-@define-color border_active rgba(167, 185, 177, 0.42);
-@define-color shadow rgba(0, 0, 0, 0.45);
-
-/* Stage 2 constants: radius 8/12/14/16px, module spacing 6px, border 1px. */
+@define-color border rgba(167, 185, 177, 0.14);
+@define-color border_strong rgba(167, 185, 177, 0.30);
+@define-color shadow rgba(0, 0, 0, 0.55);
 
 /* Base */
 * {
@@ -52,12 +52,12 @@ window#waybar {
 #clock,
 #custom-power {
   margin: 3px 0;
-  padding: 3px 9px;
+  padding: 2px 8px;
   background: @surface_01;
   border: 1px solid @border;
-  border-radius: 14px;
+  border-radius: 12px;
   color: @text_01;
-  box-shadow: 0 6px 18px @shadow;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28);
 }
 
 #custom-launcher:hover,
@@ -67,13 +67,13 @@ window#waybar {
 #pulseaudio:hover,
 #clock:hover {
   background: @surface_02;
-  border-color: @border_active;
+  border-color: @border_strong;
   color: @text_00;
 }
 
 #custom-launcher {
-  padding: 3px 10px;
-  color: @teal_02;
+  padding: 2px 9px;
+  color: @sage_02;
 }
 
 #custom-power {
@@ -82,40 +82,40 @@ window#waybar {
 
 /* Workspaces */
 #workspaces {
-  padding: 3px 5px;
+  padding: 2px 5px;
 }
 
 #workspaces button {
-  margin: 0 2px;
-  padding: 1px 8px;
-  min-width: 16px;
-  border-radius: 11px;
+  margin: 0 1px;
+  padding: 1px 7px;
+  min-width: 14px;
+  border-radius: 999px;
   background: transparent;
   color: @text_02;
 }
 
 #workspaces button:hover {
-  background: rgba(167, 185, 177, 0.10);
+  background: rgba(167, 185, 177, 0.08);
   color: @text_01;
 }
 
 #workspaces button.active {
-  background: rgba(81, 111, 102, 0.74);
+  background: rgba(66, 99, 93, 0.82);
   color: @text_00;
-  border: 1px solid rgba(167, 185, 177, 0.24);
+  border: 1px solid rgba(167, 185, 177, 0.22);
 }
 
 #workspaces button.urgent {
-  background: rgba(209, 120, 108, 0.24);
+  background: rgba(200, 116, 105, 0.22);
   color: @danger;
 }
 
 /* Window title */
 #window {
-  padding-left: 12px;
-  padding-right: 12px;
+  padding-left: 10px;
+  padding-right: 10px;
   color: @text_01;
-  background: @surface_00;
+  background: rgba(11, 17, 16, 0.58);
 }
 
 window#waybar.empty #window {
@@ -127,10 +127,7 @@ window#waybar.empty #window {
   color: @amber_00;
 }
 
-#network.disconnected {
-  color: @text_02;
-}
-
+#network.disconnected,
 #pulseaudio.muted {
   color: @text_02;
 }
@@ -141,7 +138,7 @@ window#waybar.empty #window {
 }
 
 #custom-clipboard {
-  color: @teal_02;
+  color: @sage_02;
 }
 
 #clock {
@@ -150,8 +147,8 @@ window#waybar.empty #window {
 
 /* Tray */
 #tray {
-  padding-left: 8px;
-  padding-right: 8px;
+  padding-left: 7px;
+  padding-right: 7px;
 }
 
 #tray menu {
@@ -172,8 +169,8 @@ window#waybar.empty #window {
 
 /* Tooltips */
 tooltip {
-  background: rgba(14, 19, 18, 0.94);
-  border: 1px solid @border_active;
+  background: rgba(11, 17, 16, 0.94);
+  border: 1px solid @border_strong;
   border-radius: 12px;
   color: @text_00;
 }

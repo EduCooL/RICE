@@ -4,33 +4,32 @@
  */
 * {
     background: transparent;
-    base-00: #0E1312;
-    base-01: #151A19;
-    base-02: #1E2322;
-    base-03: #2A302F;
+    base-00: #0B1110;
+    base-01: #101716;
+    base-02: #17201E;
+    base-03: #202B28;
 
-    surface: rgba(21, 26, 25, 78%);
-    surface-soft: rgba(30, 35, 34, 82%);
-    surface-hover: rgba(42, 48, 47, 84%);
+    surface: rgba(16, 23, 22, 78%);
+    surface-soft: rgba(23, 32, 30, 84%);
+    surface-hover: rgba(32, 43, 40, 82%);
 
-    text: #D8E1DC;
-    text-muted: #A7B9B1;
-    text-dim: #73837D;
+    text: #D7DFDA;
+    text-muted: #AEBDB6;
+    text-dim: #7D8D86;
 
-    accent: #6E8D88;
-    accent-soft: #516F66;
-    accent-muted: rgba(81, 111, 102, 46%);
-    amber: #B89A6A;
-    danger: #D1786C;
-    border: rgba(167, 185, 177, 18%);
-    border-active: rgba(167, 185, 177, 42%);
+    sage: #6F9189;
+    sage-soft: #42635D;
+    sage-muted: rgba(66, 99, 93, 46%);
+    amber: #B7925F;
+    danger: #C87469;
+    border: rgba(167, 185, 177, 14%);
+    border-strong: rgba(167, 185, 177, 30%);
 
     font: "JetBrainsMono Nerd Font 11";
     radius: 14px;
     radius-sm: 8px;
-    radius-md: 12px;
-    radius-xl: 16px;
-    spacing: 8px;
+    radius-md: 10px;
+    radius-pill: 999px;
 }
 
 window {
@@ -45,21 +44,21 @@ mainbox {
     border-color: @border;
     border-radius: @radius;
     padding: 12px;
-    spacing: 10px;
+    spacing: 8px;
 }
 
 inputbar {
-    background-color: rgba(14, 19, 18, 64%);
+    background-color: rgba(11, 17, 16, 64%);
     border: 1px;
     border-color: @border;
     border-radius: @radius-md;
-    padding: 8px 10px;
+    padding: 7px 9px;
     spacing: 8px;
     text-color: @text;
 }
 
 prompt {
-    text-color: @amber;
+    text-color: @text-dim;
     padding: 0 6px 0 0;
 }
 
@@ -80,13 +79,13 @@ listview {
 element {
     background-color: transparent;
     border-radius: @radius-md;
-    padding: 6px 9px;
-    spacing: 9px;
+    padding: 7px 9px;
+    spacing: 8px;
     text-color: @text-muted;
 }
 
 element-icon {
-    size: 1.15em;
+    size: 1.05em;
     padding: 0 2px 0 0;
 }
 
@@ -96,27 +95,19 @@ element-text {
     vertical-align: 0.5;
 }
 
-element normal.normal {
-    background-color: transparent;
-    text-color: @text-muted;
-}
-
+element normal.normal,
 element alternate.normal {
     background-color: transparent;
     text-color: @text-muted;
 }
 
-element selected.normal {
-    background-color: @accent-muted;
-    text-color: @text;
-    border: 1px;
-    border-color: @border-active;
-}
-
+element selected.normal,
 element selected.active,
 element selected.urgent {
-    background-color: @accent-muted;
+    background-color: @sage-muted;
     text-color: @text;
+    border: 1px;
+    border-color: @border-strong;
 }
 
 element urgent.normal {

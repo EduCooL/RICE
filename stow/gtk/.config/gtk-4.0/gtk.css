@@ -1,6 +1,6 @@
 /* Minimal GTK4 polish. Libadwaita apps should remain mostly app-controlled. */
 window {
-  color: #D8E1DC;
+  color: #D7DFDA;
 }
 
 popover,
@@ -9,6 +9,6 @@ dialog {
 }
 
 selection {
-  background-color: #394F4B;
-  color: #D8E1DC;
+  background-color: #314844;
+  color: #D7DFDA;
 }

@@ -6,19 +6,19 @@ format = "$directory$git_branch$git_status$python$nodejs$package$docker_context$
 palette = "cozy_rain"
 
 [palettes.cozy_rain]
-base = "#0E1312"
-surface = "#151A19"
-text = "#D8E1DC"
-muted = "#A7B9B1"
-dim = "#73837D"
-teal_soft = "#516F66"
-teal = "#6E8D88"
-sage = "#8BAE8B"
-amber = "#B89A6A"
-danger = "#D1786C"
+base = "#0B1110"
+surface = "#101716"
+text = "#D7DFDA"
+muted = "#AEBDB6"
+dim = "#7D8D86"
+sage_soft = "#42635D"
+sage = "#6F9189"
+success = "#8AAA7F"
+amber = "#B7925F"
+danger = "#C87469"
 
 [directory]
-style = "bold teal"
+style = "bold sage"
 truncation_length = 4
 truncation_symbol = "../"
 read_only = " ro"
@@ -60,7 +60,7 @@ format = "[$symbol$version]($style) "
 
 [docker_context]
 symbol = "docker "
-style = "teal"
+style = "sage"
 format = "[$symbol$context]($style) "
 only_with_files = true
 
@@ -73,6 +73,6 @@ format = "[$duration]($style) "
 disabled = false
 
 [character]
-success_symbol = "[>](bold teal)"
+success_symbol = "[>](bold sage)"
 error_symbol = "[>](bold danger)"
 vimcmd_symbol = "[<](bold amber)"
