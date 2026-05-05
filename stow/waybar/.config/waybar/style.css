@@ -1,0 +1,180 @@
+/* Palette */
+/* TODO: Generate or import these tokens from themes/colors.css via scripts/apply-theme.sh. */
+@define-color base_00 #0E1312;
+@define-color base_01 #151A19;
+@define-color base_02 #1E2322;
+@define-color base_03 #2A302F;
+@define-color text_00 #D8E1DC;
+@define-color text_01 #A7B9B1;
+@define-color text_02 #73837D;
+@define-color teal_00 #394F4B;
+@define-color teal_01 #516F66;
+@define-color teal_02 #6E8D88;
+@define-color amber_00 #B89A6A;
+@define-color danger #D1786C;
+@define-color warning #D8A657;
+@define-color success #8BAE8B;
+@define-color info #7FA6A0;
+@define-color border rgba(167, 185, 177, 0.18);
+@define-color border_active rgba(167, 185, 177, 0.42);
+@define-color shadow rgba(0, 0, 0, 0.45);
+
+/* Base */
+* {
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  font-family: "JetBrainsMono Nerd Font", "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+window#waybar {
+  background: transparent;
+  color: @text_00;
+}
+
+/* Shared module cards */
+#custom-launcher,
+#workspaces,
+#window,
+#tray,
+#custom-updates,
+#network,
+#pulseaudio,
+#battery,
+#custom-clipboard,
+#clock,
+#custom-power {
+  margin: 3px 0;
+  padding: 3px 9px;
+  background: rgba(21, 26, 25, 0.78);
+  border: 1px solid @border;
+  border-radius: 14px;
+  color: @text_01;
+  box-shadow: 0 6px 18px @shadow;
+}
+
+#custom-launcher:hover,
+#custom-clipboard:hover,
+#custom-power:hover,
+#network:hover,
+#pulseaudio:hover,
+#clock:hover {
+  background: rgba(30, 35, 34, 0.86);
+  border-color: @border_active;
+  color: @text_00;
+}
+
+#custom-launcher {
+  padding: 3px 10px;
+  color: @teal_02;
+}
+
+#custom-power {
+  color: @amber_00;
+}
+
+/* Workspaces */
+#workspaces {
+  padding: 3px 5px;
+}
+
+#workspaces button {
+  margin: 0 2px;
+  padding: 1px 8px;
+  min-width: 16px;
+  border-radius: 11px;
+  background: transparent;
+  color: @text_02;
+}
+
+#workspaces button:hover {
+  background: rgba(167, 185, 177, 0.10);
+  color: @text_01;
+}
+
+#workspaces button.active {
+  background: rgba(81, 111, 102, 0.74);
+  color: @text_00;
+  border: 1px solid rgba(167, 185, 177, 0.24);
+}
+
+#workspaces button.urgent {
+  background: rgba(209, 120, 108, 0.24);
+  color: @danger;
+}
+
+/* Window title */
+#window {
+  padding-left: 12px;
+  padding-right: 12px;
+  color: @text_01;
+  background: rgba(14, 19, 18, 0.62);
+}
+
+window#waybar.empty #window {
+  color: @text_02;
+}
+
+/* System modules */
+#custom-updates {
+  color: @amber_00;
+}
+
+#network.disconnected {
+  color: @text_02;
+}
+
+#pulseaudio.muted {
+  color: @text_02;
+}
+
+#battery.charging,
+#battery.plugged {
+  color: @success;
+}
+
+#custom-clipboard {
+  color: @teal_02;
+}
+
+#clock {
+  color: @text_00;
+}
+
+/* Tray */
+#tray {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+#tray menu {
+  background: @base_01;
+  border: 1px solid @border;
+  border-radius: 12px;
+  color: @text_00;
+}
+
+/* Critical / warning states */
+#battery.warning:not(.charging) {
+  color: @warning;
+}
+
+#battery.critical:not(.charging) {
+  color: @danger;
+}
+
+/* Tooltips */
+tooltip {
+  background: rgba(14, 19, 18, 0.94);
+  border: 1px solid @border_active;
+  border-radius: 12px;
+  color: @text_00;
+}
+
+tooltip label {
+  padding: 6px 8px;
+  color: @text_00;
+}
+

@@ -5,9 +5,16 @@ REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 HYPR_SOURCE="$REPO_ROOT/stow/hypr/.config/hypr"
 HYPR_CONFIG_HOME="$HOME/.config/hypr"
 HYPR_CONFIG="$HYPR_CONFIG_HOME"
+WAYBAR_SOURCE="$REPO_ROOT/stow/waybar/.config/waybar"
+WAYBAR_CONFIG_HOME="$HOME/.config/waybar"
+WAYBAR_CONFIG="$WAYBAR_CONFIG_HOME"
 
 if [[ ! -f "$HYPR_CONFIG_HOME/hyprland.conf" && -d "$HYPR_SOURCE" ]]; then
   HYPR_CONFIG="$HYPR_SOURCE"
+fi
+
+if [[ ! -f "$WAYBAR_CONFIG_HOME/config.jsonc" && -d "$WAYBAR_SOURCE" ]]; then
+  WAYBAR_CONFIG="$WAYBAR_SOURCE"
 fi
 
 ok() {
@@ -145,6 +152,26 @@ check_executable "$HYPR_CONFIG/scripts/launcher.sh"
 check_executable "$HYPR_CONFIG/scripts/reload.sh"
 check_executable "$HYPR_CONFIG/scripts/toggle-night-mode.sh"
 check_executable "$HYPR_CONFIG/scripts/wallpaper.sh"
+
+printf '\nWaybar config\n'
+printf '%s\n' '-------------'
+
+if [[ "$WAYBAR_CONFIG" == "$WAYBAR_SOURCE" ]]; then
+  warn "Waybar module is not stowed to $WAYBAR_CONFIG_HOME; checking repository source files instead"
+  warn "Run: stow --restow --dir=\"\$PWD/stow\" --target=\"\$HOME\" waybar"
+fi
+
+check_file "$WAYBAR_CONFIG/config.jsonc"
+check_file "$WAYBAR_CONFIG/style.css"
+check_file "$WAYBAR_CONFIG/README.md"
+
+printf '\nWaybar module scripts\n'
+printf '%s\n' '---------------------'
+
+check_executable "$WAYBAR_CONFIG/modules/power.sh"
+check_executable "$WAYBAR_CONFIG/modules/clipboard.sh"
+check_executable "$WAYBAR_CONFIG/modules/network.sh"
+check_executable "$WAYBAR_CONFIG/modules/updates.sh"
 
 printf '\nHealth check finished. Warnings are expected before package installation.\n'
 exit 0

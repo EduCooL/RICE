@@ -1,0 +1,121 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 34,
+  "spacing": 6,
+  "margin-top": 6,
+  "margin-left": 10,
+  "margin-right": 10,
+
+  "modules-left": [
+    "custom/launcher",
+    "hyprland/workspaces"
+  ],
+  "modules-center": [
+    "hyprland/window"
+  ],
+  "modules-right": [
+    "tray",
+    "custom/updates",
+    "network",
+    "pulseaudio",
+    "battery",
+    "custom/clipboard",
+    "clock",
+    "custom/power"
+  ],
+
+  "custom/launcher": {
+    "format": "󰣇",
+    "tooltip": true,
+    "tooltip-format": "Launcher",
+    "on-click": "~/.config/hypr/scripts/launcher.sh"
+  },
+
+  "hyprland/workspaces": {
+    "format": "{id}",
+    "sort-by-number": true,
+    "all-outputs": true,
+    "persistent-workspaces": {
+      "*": [1, 2, 3, 4, 5, 6]
+    }
+  },
+
+  "hyprland/window": {
+    "format": "{}",
+    "max-length": 52,
+    "separate-outputs": true,
+    "rewrite": {
+      "^$": "quiet workspace"
+    }
+  },
+
+  "tray": {
+    "icon-size": 15,
+    "spacing": 8
+  },
+
+  "custom/updates": {
+    "exec": "~/.config/waybar/modules/updates.sh",
+    "interval": 1800,
+    "return-type": "json",
+    "tooltip": true
+  },
+
+  "network": {
+    "format-wifi": "󰤨 {essid}",
+    "format-ethernet": "󰈀 wired",
+    "format-disconnected": "󰤭 offline",
+    "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ipaddr}/{cidr}",
+    "tooltip-format-ethernet": "{ifname}\n{ipaddr}/{cidr}",
+    "tooltip-format-disconnected": "Disconnected",
+    "on-click": "sh -c 'command -v nm-connection-editor >/dev/null 2>&1 && nm-connection-editor'"
+  },
+
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "󰝟 muted",
+    "format-icons": {
+      "default": ["󰕿", "󰖀", "󰕾"]
+    },
+    "scroll-step": 5,
+    "on-click": "sh -c 'command -v pavucontrol >/dev/null 2>&1 && pavucontrol'",
+    "tooltip-format": "{desc}"
+  },
+
+  "battery": {
+    "states": {
+      "warning": 25,
+      "critical": 10
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": "󰂄 {capacity}%",
+    "format-plugged": "󰚥 {capacity}%",
+    "format-alt": "{time} {icon}",
+    "format-icons": ["󰁺", "󰁼", "󰁾", "󰂀", "󰁹"],
+    "tooltip-format": "{timeTo}"
+  },
+
+  "custom/clipboard": {
+    "exec": "~/.config/waybar/modules/clipboard.sh",
+    "interval": "once",
+    "tooltip": true,
+    "tooltip-format": "Clipboard history",
+    "on-click": "~/.config/hypr/scripts/clipboard-menu.sh"
+  },
+
+  "clock": {
+    "format": "{:%H:%M}",
+    "tooltip-format": "{:%A, %d %B %Y}"
+  },
+
+  "custom/power": {
+    "exec": "~/.config/waybar/modules/power.sh",
+    "interval": "once",
+    "tooltip": true,
+    "tooltip-format": "Power menu",
+    "on-click": "~/.config/hypr/scripts/power-menu.sh"
+  }
+}
+

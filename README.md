@@ -21,7 +21,7 @@ Planned core stack:
 - GNU Stow for dotfiles management
 - Hyprpaper, Hyprlock, and Hypridle for wallpaper, lock, and idle
 
-Quickshell is a future direction and is not implemented in this bootstrap milestone.
+Quickshell is a future direction and is not implemented yet.
 
 ## Repository Layout
 
@@ -201,14 +201,55 @@ Clipboard behavior:
 
 Known Hyprland MVP limitations:
 
-- Waybar is started but not styled yet
+- Waybar is a stage-1 shell and remains a future Quickshell fallback
 - Rofi is used without project themes yet
 - SwayNC is started but not themed yet
 - night mode is a placeholder
 - wallpaper files are local-only and not committed
 - Quickshell is intentionally not implemented yet
 
-Next step: implement Waybar MVP styling and status modules according to the cozy dark reference.
+Next step: implement Rofi launcher, power menu, and clipboard menu themes according to the cozy dark reference.
+
+## Waybar MVP
+
+The Waybar module lives at:
+
+```text
+stow/waybar/.config/waybar/
+```
+
+Apply or refresh it with:
+
+```bash
+stow --restow --dir="$PWD/stow" --target="$HOME" waybar
+```
+
+Restart Waybar directly:
+
+```bash
+pkill waybar
+waybar &
+```
+
+Or use the Hyprland reload helper, which reloads Hyprland and restarts Waybar:
+
+```bash
+~/.config/hypr/scripts/reload.sh
+```
+
+Waybar layout:
+
+- left: launcher and workspaces
+- center: focused window title
+- right: tray, updates, network, audio, battery, clipboard, clock, power
+
+Waybar integrates with the existing Hypr scripts:
+
+- `custom/launcher`: `~/.config/hypr/scripts/launcher.sh`
+- `custom/clipboard`: `~/.config/hypr/scripts/clipboard-menu.sh`
+- `custom/power`: `~/.config/hypr/scripts/power-menu.sh`
+
+Rofi and SwayNC are still not themed yet. Waybar is the temporary stage-1 shell; the future custom shell direction remains Quickshell after the MVP is stable.
 
 ## Health Check
 
