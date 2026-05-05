@@ -3,9 +3,10 @@ set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 HYPR_SOURCE="$REPO_ROOT/stow/hypr/.config/hypr"
-HYPR_CONFIG="$HOME/.config/hypr"
+HYPR_CONFIG_HOME="$HOME/.config/hypr"
+HYPR_CONFIG="$HYPR_CONFIG_HOME"
 
-if [[ ! -f "$HYPR_CONFIG/hyprland.conf" && -d "$HYPR_SOURCE" ]]; then
+if [[ ! -f "$HYPR_CONFIG_HOME/hyprland.conf" && -d "$HYPR_SOURCE" ]]; then
   HYPR_CONFIG="$HYPR_SOURCE"
 fi
 
@@ -104,7 +105,7 @@ check_command starship starship
 check_command stow stow
 
 printf '\nServices\n'
-printf '--------\n'
+printf '%s\n' '--------'
 
 check_system_service NetworkManager
 check_system_service bluetooth
@@ -112,7 +113,12 @@ check_user_service pipewire
 check_user_service wireplumber
 
 printf '\nHyprland config\n'
-printf '---------------\n'
+printf '%s\n' '---------------'
+
+if [[ "$HYPR_CONFIG" == "$HYPR_SOURCE" ]]; then
+  warn "Hyprland module is not stowed to $HYPR_CONFIG_HOME; checking repository source files instead"
+  warn "Run: stow --dir=\"\$PWD/stow\" --target=\"\$HOME\" hypr"
+fi
 
 check_file "$HYPR_CONFIG/hyprland.conf"
 check_file "$HYPR_CONFIG/hyprlock.conf"
@@ -129,7 +135,7 @@ check_file "$HYPR_CONFIG/conf/keybinds.conf"
 check_file "$HYPR_CONFIG/conf/autostart.conf"
 
 printf '\nHyprland helper scripts\n'
-printf '-----------------------\n'
+printf '%s\n' '-----------------------'
 
 check_executable "$HYPR_CONFIG/scripts/screenshot-area.sh"
 check_executable "$HYPR_CONFIG/scripts/screenshot-full.sh"

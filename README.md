@@ -166,6 +166,19 @@ To stow only this module:
 stow --dir="$PWD/stow" --target="$HOME" hypr
 ```
 
+If `~/.config/hypr/scripts/clipboard-menu.sh` or another helper script is missing after pulling new repo changes, restow the module:
+
+```bash
+stow --restow --dir="$PWD/stow" --target="$HOME" hypr
+```
+
+If Stow reports conflicts, run the backup helper first:
+
+```bash
+./scripts/backup-existing-configs.sh
+stow --dir="$PWD/stow" --target="$HOME" hypr
+```
+
 To reload after changes:
 
 ```bash
