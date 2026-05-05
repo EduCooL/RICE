@@ -23,7 +23,7 @@
 
 /* Base */
 * {
-  font-family: "JetBrainsMono Nerd Font", "Inter", sans-serif;
+  font-family: "Inter", "JetBrainsMono Nerd Font", sans-serif;
   font-size: 12px;
   color: @text_00;
 }
@@ -38,32 +38,51 @@
 }
 
 .floating-notifications .notification {
-  background: @surface_02;
+  background: rgba(11, 17, 16, 0.88);
   border: 1px solid @border;
   border-radius: 14px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.34);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.42);
 }
 
 /* Notification center */
 .control-center {
-  background: @surface_00;
+  background: rgba(11, 17, 16, 0.88);
   border: 1px solid @border;
   border-radius: 14px;
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.38);
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.48);
   margin: 8px;
-  padding: 10px;
+  padding: 9px;
 }
 
 .control-center-list,
-.blank-window {
+.blank-window,
+.notification-empty,
+.notification-group,
+.notification-group-headers {
   background: transparent;
+}
+
+.notification-empty,
+.notification-empty label,
+.notification-empty image {
+  color: @text_02;
+  opacity: 0.62;
+}
+
+.notification-empty image {
+  -gtk-icon-size: 1px;
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
 }
 
 /* Notification cards */
 .notification,
 .notification-row .notification-background,
 .notification-content {
-  background: @surface_01;
+  background: rgba(16, 23, 22, 0.82);
   border-radius: 14px;
 }
 
@@ -78,12 +97,12 @@
 }
 
 .notification-row .notification-background:hover {
-  background: @surface_02;
+  background: rgba(23, 32, 30, 0.86);
   border-color: @border_strong;
 }
 
 .notification-content {
-  padding: 10px 12px;
+  padding: 10px 11px;
 }
 
 .notification-default-action,
@@ -94,12 +113,12 @@
 
 .notification-default-action:hover,
 .notification-action:hover {
-  background: rgba(66, 99, 93, 0.34);
+  background: rgba(66, 99, 93, 0.28);
 }
 
 .summary {
   color: @text_00;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 13px;
 }
 
@@ -115,7 +134,7 @@
 }
 
 .close-button {
-  background: rgba(32, 43, 40, 0.78);
+  background: rgba(16, 23, 22, 0.88);
   border: 1px solid @border;
   border-radius: 999px;
   color: @text_01;
@@ -131,13 +150,13 @@
 
 /* Headers and buttons */
 .widget-title {
-  padding: 4px 4px 8px 4px;
+  padding: 2px 3px 7px 3px;
 }
 
 .widget-title > label {
   color: @text_00;
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 13px;
+  font-weight: 600;
 }
 
 .widget-title > button,
@@ -148,13 +167,13 @@
   border: 1px solid @border;
   border-radius: 10px;
   color: @text_01;
-  padding: 7px 10px;
+  padding: 6px 9px;
 }
 
 .widget-title > button:hover,
 .widget-buttons-grid > flowbox > flowboxchild > button:hover,
 .notification-action:hover {
-  background: rgba(66, 99, 93, 0.38);
+  background: rgba(66, 99, 93, 0.30);
   color: @text_00;
   border-color: @border_strong;
 }
@@ -165,11 +184,11 @@
 .widget-volume,
 .widget-backlight,
 .widget-buttons-grid {
-  background: rgba(16, 23, 22, 0.64);
+  background: rgba(16, 23, 22, 0.72);
   border: 1px solid @border;
   border-radius: 14px;
-  margin: 6px 0;
-  padding: 9px;
+  margin: 5px 0;
+  padding: 8px;
 }
 
 .widget-dnd > label,
@@ -179,7 +198,7 @@
 }
 
 .widget-dnd > switch:checked {
-  background: @sage_01;
+  background: rgba(66, 99, 93, 0.78);
 }
 
 .widget-dnd > switch slider {
@@ -197,18 +216,18 @@
 }
 
 scale trough {
-  background: rgba(32, 43, 40, 0.72);
+  background: rgba(11, 17, 16, 0.76);
   border-radius: 999px;
   min-height: 6px;
 }
 
 scale trough highlight {
-  background: @sage_02;
+  background: @sage_01;
   border-radius: 999px;
 }
 
 scale slider {
-  background: @text_00;
+  background: @sage_03;
   border-radius: 999px;
   min-width: 12px;
   min-height: 12px;

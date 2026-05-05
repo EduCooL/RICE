@@ -29,13 +29,13 @@
   border: none;
   border-radius: 0;
   min-height: 0;
-  font-family: "JetBrainsMono Nerd Font", "Inter", sans-serif;
-  font-size: 12px;
+  font-family: "Inter", "JetBrainsMono Nerd Font", sans-serif;
+  font-size: 11px;
   font-weight: 500;
 }
 
 window#waybar {
-  background: transparent;
+  background: rgba(11, 17, 16, 0.18);
   color: @text_00;
 }
 
@@ -53,11 +53,11 @@ window#waybar {
 #custom-power {
   margin: 3px 0;
   padding: 2px 8px;
-  background: @surface_01;
+  background: rgba(11, 17, 16, 0.66);
   border: 1px solid @border;
-  border-radius: 12px;
+  border-radius: 10px;
   color: @text_01;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.20);
 }
 
 #custom-launcher:hover,
@@ -66,18 +66,18 @@ window#waybar {
 #network:hover,
 #pulseaudio:hover,
 #clock:hover {
-  background: @surface_02;
+  background: rgba(16, 23, 22, 0.82);
   border-color: @border_strong;
   color: @text_00;
 }
 
 #custom-launcher {
   padding: 2px 9px;
-  color: @sage_02;
+  color: @sage_03;
 }
 
 #custom-power {
-  color: @amber_00;
+  color: @text_01;
 }
 
 /* Workspaces */
@@ -95,14 +95,14 @@ window#waybar {
 }
 
 #workspaces button:hover {
-  background: rgba(167, 185, 177, 0.08);
+  background: rgba(49, 72, 68, 0.30);
   color: @text_01;
 }
 
 #workspaces button.active {
-  background: rgba(66, 99, 93, 0.82);
+  background: #42635D;
   color: @text_00;
-  border: 1px solid rgba(167, 185, 177, 0.22);
+  border: 1px solid rgba(167, 185, 177, 0.18);
 }
 
 #workspaces button.urgent {
@@ -115,7 +115,7 @@ window#waybar {
   padding-left: 10px;
   padding-right: 10px;
   color: @text_01;
-  background: rgba(11, 17, 16, 0.58);
+  background: rgba(11, 17, 16, 0.50);
 }
 
 window#waybar.empty #window {
@@ -124,7 +124,7 @@ window#waybar.empty #window {
 
 /* System modules */
 #custom-updates {
-  color: @amber_00;
+  color: @text_02;
 }
 
 #network.disconnected,
@@ -138,7 +138,7 @@ window#waybar.empty #window {
 }
 
 #custom-clipboard {
-  color: @sage_02;
+  color: @text_01;
 }
 
 #clock {

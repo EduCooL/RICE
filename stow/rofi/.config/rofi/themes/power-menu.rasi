@@ -1,13 +1,17 @@
 @import "shared.rasi"
 
+configuration {
+    show-icons: false;
+}
+
 window {
-    width: 20%;
+    width: 300px;
     location: center;
     anchor: center;
 }
 
 mainbox {
-    padding: 12px;
+    padding: 10px;
 }
 
 inputbar {
@@ -18,7 +22,7 @@ inputbar {
 }
 
 prompt {
-    text-color: @amber;
+    text-color: @text-dim;
 }
 
 listview {
@@ -26,7 +30,13 @@ listview {
 }
 
 element {
-    padding: 7px 9px;
+    padding: 8px;
+}
+
+element-icon {
+    enabled: false;
+    size: 0px;
+    padding: 0px;
 }
 
 element selected.normal {

@@ -1,7 +1,7 @@
 {
   "layer": "top",
   "position": "top",
-  "height": 32,
+  "height": 30,
   "spacing": 6,
   "margin-top": 6,
   "margin-left": 10,
@@ -26,7 +26,7 @@
   ],
 
   "custom/launcher": {
-    "format": "󰣇",
+    "format": "run",
     "tooltip": true,
     "tooltip-format": "Launcher",
     "on-click": "~/.config/hypr/scripts/launcher.sh"
@@ -51,8 +51,8 @@
   },
 
   "tray": {
-    "icon-size": 15,
-    "spacing": 8
+    "icon-size": 14,
+    "spacing": 7
   },
 
   "custom/updates": {
@@ -63,9 +63,9 @@
   },
 
   "network": {
-    "format-wifi": "󰤨 {essid}",
-    "format-ethernet": "󰈀 wired",
-    "format-disconnected": "󰤭 offline",
+    "format-wifi": "wifi {essid}",
+    "format-ethernet": "eth",
+    "format-disconnected": "offline",
     "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
     "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ipaddr}/{cidr}",
     "tooltip-format-ethernet": "{ifname}\n{ipaddr}/{cidr}",
@@ -74,11 +74,8 @@
   },
 
   "pulseaudio": {
-    "format": "{icon} {volume}%",
-    "format-muted": "󰝟 muted",
-    "format-icons": {
-      "default": ["󰕿", "󰖀", "󰕾"]
-    },
+    "format": "vol {volume}%",
+    "format-muted": "muted",
     "scroll-step": 5,
     "on-click": "sh -c 'command -v pavucontrol >/dev/null 2>&1 && pavucontrol'",
     "tooltip-format": "{desc}"
@@ -89,11 +86,10 @@
       "warning": 25,
       "critical": 10
     },
-    "format": "{icon} {capacity}%",
-    "format-charging": "󰂄 {capacity}%",
-    "format-plugged": "󰚥 {capacity}%",
-    "format-alt": "{time} {icon}",
-    "format-icons": ["󰁺", "󰁼", "󰁾", "󰂀", "󰁹"],
+    "format": "bat {capacity}%",
+    "format-charging": "bat {capacity}%",
+    "format-plugged": "bat {capacity}%",
+    "format-alt": "{time}",
     "tooltip-format": "{timeTo}"
   },
 

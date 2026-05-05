@@ -184,6 +184,8 @@ The planned default path for configs is:
 
 Large wallpaper binaries are not committed by default.
 
+The rice will not resemble the reference with a bright outdoor/daylight wallpaper. Use a dark rainy interior, night city window, study room, library, or desk wallpaper with small warm amber light sources. Avoid anime, cyberpunk neon, bright skies, saturated blues, and flat daylight scenes.
+
 Apply/reload the wallpaper:
 
 ```bash
@@ -441,6 +443,17 @@ Recommended manual selections:
 
 Known limitations: the Kvantum theme is a minimal local stub, not a full polished theme. Cursor theme is set to `Bibata-Modern-Ice` in GTK settings if installed; otherwise select an available cursor through `nwg-look`.
 
+For better Thunar matching, open `nwg-look` and verify:
+
+```text
+GTK theme: Adwaita-dark or another installed dark theme
+Icons: Papirus-Dark
+Font: Inter 10 or Inter 11
+Cursor: any available dark cursor
+```
+
+Thunar is still a GTK application and will not perfectly match the reference until a stronger GTK theme/icon pack is selected locally.
+
 ## Health Check
 
 Run:
@@ -570,6 +583,10 @@ This pass aligns the existing Stage-1 components without adding new major featur
 ## Stage 2 visual correction
 
 This pass corrected the first visual unification attempt to better match the cozy rainy reference: graphite/green-black surfaces, sage active states, warm amber highlights, compact spacing, subtle borders, and consistent radius.
+
+## Stage 2 hard visual reset
+
+This pass fixes the first failed visual direction: removes bright cyan/light-blue treatment, fixes broken Rofi power icons, darkens SwayNC/Waybar surfaces, and documents the wallpaper requirements needed to match the cozy rainy reference.
 
 Aligned areas:
 

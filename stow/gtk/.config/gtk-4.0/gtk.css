@@ -1,11 +1,25 @@
 /* Minimal GTK4 polish. Libadwaita apps should remain mostly app-controlled. */
 window {
+  background-color: #101716;
   color: #D7DFDA;
+}
+
+headerbar,
+popover,
+dialog,
+menu {
+  background-color: #101716;
+  color: #D7DFDA;
+  border-color: rgba(167, 185, 177, 0.14);
 }
 
 popover,
 dialog {
   border-radius: 12px;
+}
+
+button {
+  border-radius: 8px;
 }
 
 selection {

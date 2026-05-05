@@ -5,15 +5,46 @@ dialog {
   color: #D7DFDA;
 }
 
+headerbar,
+toolbar,
+menubar,
+notebook > header {
+  background-color: #0B1110;
+  color: #D7DFDA;
+  border-color: rgba(167, 185, 177, 0.14);
+}
+
+paned,
+treeview,
+list,
+sidebar,
+.sidebar {
+  background-color: #101716;
+  color: #AEBDB6;
+}
+
+treeview:selected,
+list row:selected,
+sidebar row:selected,
+.sidebar row:selected {
+  background-color: rgba(66, 99, 93, 0.58);
+  color: #D7DFDA;
+}
+
 popover,
 menu,
 .menu {
+  background-color: #101716;
+  color: #D7DFDA;
   border-radius: 12px;
   border: 1px solid rgba(167, 185, 177, 0.14);
 }
 
 button {
+  background-color: rgba(23, 32, 30, 0.84);
+  color: #D7DFDA;
   border-radius: 8px;
+  border-color: rgba(167, 185, 177, 0.14);
 }
 
 selection {
