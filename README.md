@@ -6,7 +6,7 @@ This repository is the bootstrap foundation for a personal Arch Linux Hyprland r
 
 The target mood is a cozy dark room on a rainy evening: graphite and forest-black surfaces, muted teal and sage accents, warm amber highlights, translucent rounded panels, and low visual noise. The goal is a daily usable development desktop, not a screenshot-only setup.
 
-The bootstrap milestone created the repository structure, package manifests, theme tokens, and safe setup scripts. The Hyprland MVP now adds the first working compositor layer. Waybar, Rofi, SwayNC, Kitty, Zsh, Starship, GTK, Qt, and Quickshell styling will be added in later milestones.
+The bootstrap milestone created the repository structure, package manifests, theme tokens, and safe setup scripts. The current MVP includes Hyprland, Waybar, Rofi, SwayNC, Kitty, Zsh, and Starship foundations. GTK, Qt, deeper app polish, and Quickshell will be added in later milestones.
 
 ## Stack
 
@@ -204,8 +204,8 @@ Clipboard behavior:
 Known Hyprland MVP limitations:
 
 - Waybar is a stage-1 shell and remains a future Quickshell fallback
-- Rofi is used without project themes yet
-- SwayNC is started but not themed yet
+- Rofi is themed but remains a temporary menu layer
+- SwayNC is themed but remains a temporary notification center
 - night mode is a placeholder
 - wallpaper files are local-only and not committed
 - Quickshell is intentionally not implemented yet
@@ -251,7 +251,7 @@ Waybar integrates with the existing Hypr scripts:
 - `custom/clipboard`: `~/.config/hypr/scripts/clipboard-menu.sh`
 - `custom/power`: `~/.config/hypr/scripts/power-menu.sh`
 
-SwayNC is still not themed yet. Waybar and Rofi are temporary stage-1 components; the future custom shell direction remains Quickshell after the MVP is stable.
+Waybar and Rofi are temporary stage-1 components; the future custom shell direction remains Quickshell after the MVP is stable.
 
 ## Rofi MVP
 
@@ -321,6 +321,38 @@ Toggle the notification center:
 ```
 
 SwayNC is the temporary notification center and lightweight control center. It keeps the dark graphite, muted teal, sage border, and warm amber visual language without trying to become the final Quickshell dashboard.
+
+## Terminal And Shell MVP
+
+Terminal and shell modules:
+
+```text
+stow/kitty/.config/kitty/
+stow/zsh/
+stow/starship/.config/starship.toml
+```
+
+Apply or refresh them with:
+
+```bash
+stow --restow --dir="$PWD/stow" --target="$HOME" kitty zsh starship
+```
+
+Switch the login shell to Zsh:
+
+```bash
+chsh -s "$(command -v zsh)"
+```
+
+Test the layer:
+
+```bash
+kitty
+zsh
+starship explain
+```
+
+The shell foundation is intentionally lightweight: no Oh My Zsh, no external plugin manager, and optional integrations only when the relevant command exists. Starship provides a compact prompt with directory, Git state, selected language runtimes, Docker context, command duration, and success/error character color.
 
 ## Health Check
 

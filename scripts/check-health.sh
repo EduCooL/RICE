@@ -14,6 +14,15 @@ ROFI_CONFIG="$ROFI_CONFIG_HOME"
 SWAYNC_SOURCE="$REPO_ROOT/stow/swaync/.config/swaync"
 SWAYNC_CONFIG_HOME="$HOME/.config/swaync"
 SWAYNC_CONFIG="$SWAYNC_CONFIG_HOME"
+KITTY_SOURCE="$REPO_ROOT/stow/kitty/.config/kitty"
+KITTY_CONFIG_HOME="$HOME/.config/kitty"
+KITTY_CONFIG="$KITTY_CONFIG_HOME"
+ZSH_SOURCE="$REPO_ROOT/stow/zsh"
+ZSH_CONFIG_HOME="$HOME"
+ZSH_CONFIG="$ZSH_CONFIG_HOME"
+STARSHIP_SOURCE="$REPO_ROOT/stow/starship/.config"
+STARSHIP_CONFIG_HOME="$HOME/.config"
+STARSHIP_CONFIG="$STARSHIP_CONFIG_HOME"
 
 if [[ ! -f "$HYPR_CONFIG_HOME/hyprland.conf" && -d "$HYPR_SOURCE" ]]; then
   HYPR_CONFIG="$HYPR_SOURCE"
@@ -29,6 +38,18 @@ fi
 
 if [[ ! -f "$SWAYNC_CONFIG_HOME/config.json" && -d "$SWAYNC_SOURCE" ]]; then
   SWAYNC_CONFIG="$SWAYNC_SOURCE"
+fi
+
+if [[ ! -f "$KITTY_CONFIG_HOME/kitty.conf" && -d "$KITTY_SOURCE" ]]; then
+  KITTY_CONFIG="$KITTY_SOURCE"
+fi
+
+if [[ ! -f "$ZSH_CONFIG_HOME/.zshrc" && -d "$ZSH_SOURCE" ]]; then
+  ZSH_CONFIG="$ZSH_SOURCE"
+fi
+
+if [[ ! -f "$STARSHIP_CONFIG_HOME/starship.toml" && -d "$STARSHIP_SOURCE" ]]; then
+  STARSHIP_CONFIG="$STARSHIP_SOURCE"
 fi
 
 ok() {
@@ -125,6 +146,15 @@ check_command cliphist cliphist
 check_command zsh zsh
 check_command starship starship
 check_command stow stow
+check_command eza eza
+check_command bat bat
+check_command rg rg
+check_command fd fd
+check_command fzf fzf
+check_command zoxide zoxide
+check_command yazi yazi
+check_command tmux tmux
+check_command gh gh
 
 printf '\nServices\n'
 printf '%s\n' '--------'
@@ -217,6 +247,34 @@ fi
 check_file "$SWAYNC_CONFIG/config.json"
 check_file "$SWAYNC_CONFIG/style.css"
 check_file "$SWAYNC_CONFIG/README.md"
+
+printf '\nTerminal and shell config\n'
+printf '%s\n' '-------------------------'
+
+if [[ "$KITTY_CONFIG" == "$KITTY_SOURCE" ]]; then
+  warn "Kitty module is not stowed to $KITTY_CONFIG_HOME; checking repository source files instead"
+  warn "Run: stow --restow --dir=\"\$PWD/stow\" --target=\"\$HOME\" kitty"
+fi
+
+if [[ "$ZSH_CONFIG" == "$ZSH_SOURCE" ]]; then
+  warn "Zsh module is not stowed to $ZSH_CONFIG_HOME; checking repository source files instead"
+  warn "Run: stow --restow --dir=\"\$PWD/stow\" --target=\"\$HOME\" zsh"
+fi
+
+if [[ "$STARSHIP_CONFIG" == "$STARSHIP_SOURCE" ]]; then
+  warn "Starship module is not stowed to $STARSHIP_CONFIG_HOME; checking repository source files instead"
+  warn "Run: stow --restow --dir=\"\$PWD/stow\" --target=\"\$HOME\" starship"
+fi
+
+check_file "$KITTY_CONFIG/kitty.conf"
+check_file "$KITTY_CONFIG/theme.conf"
+check_file "$KITTY_CONFIG/README.md"
+check_file "$ZSH_CONFIG/.zshrc"
+check_file "$ZSH_CONFIG/.config/zsh/env.zsh"
+check_file "$ZSH_CONFIG/.config/zsh/aliases.zsh"
+check_file "$ZSH_CONFIG/.config/zsh/functions.zsh"
+check_file "$ZSH_CONFIG/README.md"
+check_file "$STARSHIP_CONFIG/starship.toml"
 
 printf '\nHealth check finished. Warnings are expected before package installation.\n'
 exit 0
