@@ -1,7 +1,7 @@
 import QtQuick
 import Quickshell.Io
 
-QtObject {
+Item {
     id: service
 
     property string hostname: "arch"
