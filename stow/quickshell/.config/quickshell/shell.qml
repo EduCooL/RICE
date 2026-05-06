@@ -29,7 +29,7 @@ ShellRoot {
     }
 
     Variants {
-        variants: Quickshell.screens
+        model: Quickshell.screens
 
         Modules.Bar {
             property var modelData
@@ -44,7 +44,7 @@ ShellRoot {
     }
 
     Variants {
-        variants: Quickshell.screens
+        model: Quickshell.screens
 
         Modules.Dashboard {
             property var modelData
