@@ -8,12 +8,16 @@ RowLayout {
     property var shell: null
     property var audio: null
     property var battery: null
-    readonly property bool audioMuted: audio && audio.muted === true
+    readonly property bool audioMuted: audio !== null && audio !== undefined && audio.muted === true
     readonly property string audioVolume: audio && audio.volume !== undefined && audio.volume !== "" ? audio.volume : "--"
-    readonly property bool batteryAvailable: battery && battery.available === true
+    readonly property bool batteryAvailable: battery !== null && battery !== undefined && battery.available === true
     readonly property string batteryPercent: battery && battery.percent !== undefined && battery.percent !== "" ? battery.percent : "--"
 
-    spacing: metrics.spacingSm
+    readonly property int safeSpacingSm: metrics && metrics.spacingSm !== undefined ? metrics.spacingSm : 6
+    readonly property int safePillRadius: metrics && metrics.pillRadius !== undefined ? metrics.pillRadius : 999
+    readonly property int safeBarSize: type && type.barSize !== undefined ? type.barSize : 11
+
+    spacing: safeSpacingSm
 
     Theme.Colors { id: colors }
     Theme.Metrics { id: metrics }
@@ -61,7 +65,7 @@ RowLayout {
 
         Layout.preferredWidth: preferredWidth
         Layout.preferredHeight: 28
-        radius: metrics.pillRadius
+        radius: root.safePillRadius
         color: colors.surfacePanel
         border.width: 1
         border.color: colors.border
@@ -71,14 +75,14 @@ RowLayout {
             text: parent.label
             color: parent.dim ? colors.textDim : colors.textMuted
             font.family: type.uiFont
-            font.pixelSize: type.barSize
+            font.pixelSize: root.safeBarSize
             font.weight: Font.Medium
         }
     }
 
     component ClockPill: Rectangle {
         Layout.preferredHeight: 28
-        radius: metrics.pillRadius
+        radius: root.safePillRadius
         color: colors.surfacePanel
         border.width: 1
         border.color: colors.border
@@ -97,7 +101,7 @@ RowLayout {
             text: parent.timeText
             color: colors.textMain
             font.family: type.uiFont
-            font.pixelSize: type.barSize
+            font.pixelSize: root.safeBarSize
             font.weight: Font.DemiBold
         }
     }

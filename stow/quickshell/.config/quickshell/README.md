@@ -52,3 +52,5 @@ The dashboard is hidden by default. Start Quickshell and click the `dash` pill i
 - CPU/RAM cards are placeholders
 - dashboard toggle is in-QML only for now
 - this prototype is meant for screenshots and iteration before replacing Waybar
+
+Some Qt portal warnings may appear when restarting Quickshell repeatedly. If the UI works, those are lower priority for now. Repeated QML TypeErrors from files in this repo are treated as bugs and should be fixed.
