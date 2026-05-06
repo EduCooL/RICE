@@ -6,7 +6,7 @@ This repository is the bootstrap foundation for a personal Arch Linux Hyprland r
 
 The target mood is a cozy dark room on a rainy evening: graphite and forest-black surfaces, muted teal and sage accents, warm amber highlights, translucent rounded panels, and low visual noise. The goal is a daily usable development desktop, not a screenshot-only setup.
 
-The bootstrap milestone created the repository structure, package manifests, theme tokens, and safe setup scripts. The current MVP includes Hyprland, Waybar, Rofi, SwayNC, Kitty, Zsh, Starship, GTK, Qt, XDG, and file manager foundations. Deeper app polish and Quickshell will be added in later milestones.
+The bootstrap milestone created the repository structure, package manifests, theme tokens, and safe setup scripts. The current MVP includes Hyprland, Waybar, Rofi, SwayNC, Kitty, Zsh, Starship, GTK, Qt, XDG, and file manager foundations. Stage 3 now adds an isolated Quickshell prototype without removing the existing fallback stack.
 
 ## Stack
 
@@ -21,11 +21,11 @@ Planned core stack:
 - GNU Stow for dotfiles management
 - Hyprpaper, Hyprlock, and Hypridle for wallpaper, lock, and idle
 
-Quickshell is a future direction and is not implemented yet.
+Quickshell is a Stage-3 prototype and does not replace Waybar yet.
 
 ## Current Stage
 
-Stage 1 — functional MVP.
+Stage 3 — Quickshell prototype.
 
 The goal of this stage is reliability: install packages, stow modules, reload Hyprland, launch core tools, recover from conflicts, and keep the repo maintainable. Visual unification comes next.
 
@@ -255,9 +255,9 @@ Known Hyprland MVP limitations:
 - SwayNC is themed but remains a temporary notification center
 - night mode is a placeholder
 - wallpaper files are local-only and not committed
-- Quickshell is intentionally not implemented yet
+- Quickshell is now available as a manual Stage-3 prototype
 
-Stage-1 status: Hyprland is functional and integrated with Waybar, Rofi, SwayNC, Kitty, shell, GTK/Qt, XDG, and Thunar modules.
+Stage-1 status: Hyprland remains functional and integrated with Waybar, Rofi, SwayNC, Kitty, shell, GTK/Qt, XDG, and Thunar modules. Stage 3 adds Quickshell in parallel.
 
 ## Waybar MVP
 
@@ -621,6 +621,37 @@ Forensic reset scope:
 This pass treats the failure as composition and component design, not wallpaper. It rebuilds the stock-component layout around a consistent card system: small Waybar pills, Rofi command cards, SwayNC dashboard-like cards, a deliberate Hyprlock card, and safer GTK/Thunar baseline styling.
 
 The reference image includes dashboard-like custom UI. Waybar, Rofi, SwayNC, and GTK can only approximate it. A faithful reproduction requires Stage 3 Quickshell/dashboard work. Stage 2 focuses on making the stock-component desktop visually coherent and usable.
+
+## Stage 3 — Quickshell prototype
+
+Stage 3 introduces a rollback-safe Quickshell prototype in:
+
+```text
+stow/quickshell/.config/quickshell/
+```
+
+It currently provides a custom top bar, workspace pills, active-window center pill, right-side status cluster, and a right-side dashboard prototype with system, clock, quick action, and status cards.
+
+Apply it with:
+
+```bash
+stow --restow --dir="$PWD/stow" --target="$HOME" quickshell
+```
+
+Run it manually:
+
+```bash
+quickshell
+```
+
+Rollback to the Stage-1 fallback bar:
+
+```bash
+pkill quickshell
+waybar &
+```
+
+Quickshell is not autostarted yet. Waybar, Rofi, and SwayNC remain the stable fallback stack while the prototype is tested.
 
 Aligned areas:
 

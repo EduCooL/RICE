@@ -35,6 +35,9 @@ XDG_CONFIG="$XDG_CONFIG_HOME"
 THUNAR_SOURCE="$REPO_ROOT/stow/thunar/.config/Thunar"
 THUNAR_CONFIG_HOME="$HOME/.config/Thunar"
 THUNAR_CONFIG="$THUNAR_CONFIG_HOME"
+QUICKSHELL_SOURCE="$REPO_ROOT/stow/quickshell/.config/quickshell"
+QUICKSHELL_CONFIG_HOME="$HOME/.config/quickshell"
+QUICKSHELL_CONFIG="$QUICKSHELL_CONFIG_HOME"
 
 if [[ ! -f "$HYPR_CONFIG_HOME/hyprland.conf" && -d "$HYPR_SOURCE" ]]; then
   HYPR_CONFIG="$HYPR_SOURCE"
@@ -78,6 +81,10 @@ fi
 
 if [[ ! -f "$THUNAR_CONFIG_HOME/uca.xml" && -d "$THUNAR_SOURCE" ]]; then
   THUNAR_CONFIG="$THUNAR_SOURCE"
+fi
+
+if [[ ! -f "$QUICKSHELL_CONFIG_HOME/shell.qml" && -d "$QUICKSHELL_SOURCE" ]]; then
+  QUICKSHELL_CONFIG="$QUICKSHELL_SOURCE"
 fi
 
 ok() {
@@ -169,6 +176,7 @@ printf '=====================\n\n'
 
 check_command hyprland hyprland Hyprland
 check_command waybar waybar
+check_command quickshell quickshell
 check_command rofi rofi
 check_command swaync swaync
 check_command swaync-client swaync-client
@@ -260,6 +268,7 @@ check_executable "$REPO_ROOT/scripts/check-health.sh"
 check_executable "$REPO_ROOT/scripts/dotpull.sh"
 check_executable "$REPO_ROOT/scripts/dotstatus.sh"
 check_executable "$REPO_ROOT/scripts/dev-health.sh"
+check_executable "$REPO_ROOT/scripts/quickshell-reload.sh"
 
 printf '\nDocumentation\n'
 printf '%s\n' '-------------'
@@ -329,6 +338,34 @@ fi
 check_file "$WAYBAR_CONFIG/config.jsonc"
 check_file "$WAYBAR_CONFIG/style.css"
 check_file "$WAYBAR_CONFIG/README.md"
+
+printf '\nQuickshell prototype\n'
+printf '%s\n' '--------------------'
+
+if [[ "$QUICKSHELL_CONFIG" == "$QUICKSHELL_SOURCE" ]]; then
+  warn "Quickshell module is not stowed to $QUICKSHELL_CONFIG_HOME; checking repository source files instead"
+  warn "Run: stow --restow --dir=\"\$PWD/stow\" --target=\"\$HOME\" quickshell"
+fi
+
+check_file "$QUICKSHELL_CONFIG/shell.qml"
+check_file "$QUICKSHELL_CONFIG/README.md"
+check_file "$QUICKSHELL_CONFIG/theme/Colors.qml"
+check_file "$QUICKSHELL_CONFIG/theme/Metrics.qml"
+check_file "$QUICKSHELL_CONFIG/theme/Typography.qml"
+check_file "$QUICKSHELL_CONFIG/modules/Bar.qml"
+check_file "$QUICKSHELL_CONFIG/modules/Dashboard.qml"
+check_file "$QUICKSHELL_CONFIG/modules/Workspaces.qml"
+check_file "$QUICKSHELL_CONFIG/modules/ActiveWindow.qml"
+check_file "$QUICKSHELL_CONFIG/modules/StatusCluster.qml"
+check_file "$QUICKSHELL_CONFIG/modules/SystemCard.qml"
+check_file "$QUICKSHELL_CONFIG/modules/QuickActions.qml"
+check_file "$QUICKSHELL_CONFIG/modules/ClockCard.qml"
+check_file "$QUICKSHELL_CONFIG/services/Hyprland.qml"
+check_file "$QUICKSHELL_CONFIG/services/System.qml"
+check_file "$QUICKSHELL_CONFIG/services/Audio.qml"
+check_file "$QUICKSHELL_CONFIG/services/Battery.qml"
+check_executable "$QUICKSHELL_CONFIG/scripts/toggle-dashboard.sh"
+check_executable "$QUICKSHELL_CONFIG/scripts/reload-quickshell.sh"
 
 printf '\nWaybar module scripts\n'
 printf '%s\n' '---------------------'

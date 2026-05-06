@@ -7,6 +7,7 @@ BACKUP_ROOT="$HOME/.dotfiles-backups/$(date +%Y-%m-%d_%H-%M-%S)"
 targets=(
   "$HOME/.config/hypr"
   "$HOME/.config/waybar"
+  "$HOME/.config/quickshell"
   "$HOME/.config/rofi"
   "$HOME/.config/swaync"
   "$HOME/.config/kitty"
