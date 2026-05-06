@@ -5,7 +5,10 @@ import "../theme" as Theme
 Rectangle {
     id: root
 
-    property var system
+    property var system: null
+    readonly property string hostnameText: system && system.hostname ? system.hostname : "arch"
+    readonly property string kernelText: system && system.kernel ? system.kernel : "--"
+    readonly property string uptimeText: system && system.uptime ? system.uptime : "--"
 
     radius: metrics.cardRadius
     color: colors.surfaceCard
@@ -31,7 +34,7 @@ Rectangle {
         }
 
         Text {
-            text: root.system.hostname + " / " + root.system.kernel
+            text: root.hostnameText + " / " + root.kernelText
             color: colors.textMuted
             font.family: type.uiFont
             font.pixelSize: type.labelSize
@@ -61,7 +64,7 @@ Rectangle {
 
             MetricText {
                 label: "uptime"
-                value: root.system.uptime
+                value: root.uptimeText
                 Layout.fillWidth: true
             }
         }

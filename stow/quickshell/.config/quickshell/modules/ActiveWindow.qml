@@ -5,7 +5,8 @@ import "../theme" as Theme
 Rectangle {
     id: root
 
-    property var hypr
+    property var hypr: null
+    readonly property string titleText: hypr && hypr.activeTitle ? hypr.activeTitle : "quiet workspace"
 
     implicitWidth: 260
     implicitHeight: 28
@@ -21,7 +22,7 @@ Rectangle {
     Text {
         anchors.centerIn: parent
         width: parent.width - 24
-        text: root.hypr.activeTitle || "quiet workspace"
+        text: root.titleText
         elide: Text.ElideRight
         horizontalAlignment: Text.AlignHCenter
         color: colors.textDim

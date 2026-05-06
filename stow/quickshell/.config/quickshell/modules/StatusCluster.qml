@@ -5,9 +5,13 @@ import "../theme" as Theme
 RowLayout {
     id: root
 
-    property var shell
-    property var audio
-    property var battery
+    property var shell: null
+    property var audio: null
+    property var battery: null
+    readonly property bool audioMuted: audio && audio.muted === true
+    readonly property string audioVolume: audio && audio.volume !== undefined && audio.volume !== "" ? audio.volume : "--"
+    readonly property bool batteryAvailable: battery && battery.available === true
+    readonly property string batteryPercent: battery && battery.percent !== undefined && battery.percent !== "" ? battery.percent : "--"
 
     spacing: metrics.spacingSm
 
@@ -16,18 +20,18 @@ RowLayout {
     Theme.Typography { id: type }
 
     StatusPill {
-        label: "wifi"
+        label: "wifi --"
         preferredWidth: 48
     }
 
     StatusPill {
-        label: root.audio.muted ? "muted" : "vol " + root.audio.volume + "%"
+        label: root.audioMuted ? "muted" : "vol " + root.audioVolume + (root.audioVolume === "--" ? "" : "%")
         preferredWidth: 66
     }
 
     StatusPill {
-        visible: root.battery.available
-        label: "bat " + root.battery.percent + "%"
+        visible: true
+        label: "bat " + root.batteryPercent + (root.batteryPercent === "--" ? "" : "%")
         preferredWidth: 66
     }
 
@@ -43,7 +47,10 @@ RowLayout {
         MouseArea {
             anchors.fill: parent
             cursorShape: Qt.PointingHandCursor
-            onClicked: root.shell.toggleDashboard()
+            onClicked: {
+                if (root.shell && root.shell.toggleDashboard)
+                    root.shell.toggleDashboard();
+            }
         }
     }
 

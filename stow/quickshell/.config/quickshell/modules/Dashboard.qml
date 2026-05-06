@@ -6,12 +6,17 @@ import "../theme" as Theme
 PanelWindow {
     id: root
 
-    property var shell
-    property var hypr
-    property var system
-    property var audio
-    property var battery
+    property var shell: null
+    property var hypr: null
+    property var system: null
+    property var audio: null
+    property var battery: null
     property bool dashboardOpen: false
+    readonly property bool audioMuted: audio && audio.muted === true
+    readonly property string audioVolume: audio && audio.volume !== undefined && audio.volume !== "" ? audio.volume : "--"
+    readonly property bool batteryAvailable: battery && battery.available === true
+    readonly property string batteryPercent: battery && battery.percent !== undefined && battery.percent !== "" ? battery.percent : "--"
+    readonly property string batteryState: battery && battery.state ? battery.state : ""
 
     visible: dashboardOpen
     focusable: true
@@ -91,8 +96,13 @@ PanelWindow {
     }
 
     component StatusCard: Rectangle {
-        property var audio
-        property var battery
+        property var audio: null
+        property var battery: null
+        readonly property bool audioMuted: audio && audio.muted === true
+        readonly property string audioVolume: audio && audio.volume !== undefined && audio.volume !== "" ? audio.volume : "--"
+        readonly property bool batteryAvailable: battery && battery.available === true
+        readonly property string batteryPercent: battery && battery.percent !== undefined && battery.percent !== "" ? battery.percent : "--"
+        readonly property string batteryState: battery && battery.state ? battery.state : ""
 
         implicitHeight: 126
         radius: metrics.cardRadius
@@ -114,14 +124,14 @@ PanelWindow {
             }
 
             Text {
-                text: "volume  " + (parent.parent.audio.muted ? "muted" : parent.parent.audio.volume + "%")
+                text: "volume  " + (parent.parent.audioMuted ? "muted" : parent.parent.audioVolume + (parent.parent.audioVolume === "--" ? "" : "%"))
                 color: colors.textMuted
                 font.family: type.uiFont
                 font.pixelSize: type.labelSize
             }
 
             Text {
-                text: parent.parent.battery.available ? "battery " + parent.parent.battery.percent + "% " + parent.parent.battery.state : "battery unavailable"
+                text: parent.parent.batteryAvailable ? "battery " + parent.parent.batteryPercent + "% " + parent.parent.batteryState : "battery --"
                 color: colors.textMuted
                 font.family: type.uiFont
                 font.pixelSize: type.labelSize

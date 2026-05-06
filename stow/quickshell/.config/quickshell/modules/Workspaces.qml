@@ -5,7 +5,8 @@ import "../theme" as Theme
 RowLayout {
     id: root
 
-    property var hypr
+    property var hypr: null
+    readonly property int activeWorkspaceId: hypr && hypr.activeWorkspace !== undefined ? hypr.activeWorkspace : 1
 
     spacing: metrics.spacingXs
 
@@ -19,26 +20,31 @@ RowLayout {
         Rectangle {
             required property int modelData
 
-            Layout.preferredWidth: modelData === root.hypr.activeWorkspace ? 28 : 22
+            readonly property bool isActive: modelData === root.activeWorkspaceId
+
+            Layout.preferredWidth: isActive ? 28 : 22
             Layout.preferredHeight: 22
             radius: metrics.pillRadius
-            color: modelData === root.hypr.activeWorkspace ? colors.sageActive : "transparent"
-            border.width: modelData === root.hypr.activeWorkspace ? 1 : 0
+            color: isActive ? colors.sageActive : "transparent"
+            border.width: isActive ? 1 : 0
             border.color: colors.border
 
             Text {
                 anchors.centerIn: parent
                 text: parent.modelData
-                color: parent.modelData === root.hypr.activeWorkspace ? colors.textMain : colors.textDim
+                color: parent.isActive ? colors.textMain : colors.textDim
                 font.family: type.uiFont
                 font.pixelSize: type.barSize
-                font.weight: parent.modelData === root.hypr.activeWorkspace ? Font.DemiBold : Font.Medium
+                font.weight: parent.isActive ? Font.DemiBold : Font.Medium
             }
 
             MouseArea {
                 anchors.fill: parent
                 cursorShape: Qt.PointingHandCursor
-                onClicked: root.hypr.switchWorkspace(parent.modelData)
+                onClicked: {
+                    if (root.hypr && root.hypr.switchWorkspace)
+                        root.hypr.switchWorkspace(parent.modelData);
+                }
             }
         }
     }
