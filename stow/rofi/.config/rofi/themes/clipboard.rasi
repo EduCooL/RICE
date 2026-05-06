@@ -19,7 +19,6 @@ inputbar {
 }
 
 prompt {
-    content: "clip";
     text-color: @text-dim;
 }
 

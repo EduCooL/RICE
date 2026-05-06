@@ -23,7 +23,6 @@ inputbar {
 }
 
 prompt {
-    content: "power";
     text-color: @text-dim;
 }
 

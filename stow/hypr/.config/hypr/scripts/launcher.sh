@@ -7,4 +7,8 @@ if ! command -v rofi >/dev/null 2>&1; then
   exit 1
 fi
 
-rofi -show drun -theme "$HOME/.config/rofi/themes/launcher.rasi"
+rofi \
+  -show drun \
+  -matching fuzzy \
+  -sort \
+  -theme "$HOME/.config/rofi/themes/launcher.rasi"

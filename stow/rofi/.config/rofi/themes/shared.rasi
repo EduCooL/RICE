@@ -1,70 +1,73 @@
 /*
- * Stage-2 forensic reset.
- * Rofi must behave like a compact graphite command palette, not a default popup.
+ * Stage-2 layout rebuild.
+ * Shared Rofi card system: dark panel, integrated input, compact rows.
  */
 * {
-    bg: transparent;
-    base: #0B1110;
-    base-alt: #101716;
-    surface: rgba(11, 17, 16, 90%);
-    surface-alt: rgba(16, 23, 22, 88%);
-    surface-hover: rgba(23, 32, 30, 86%);
+    background: transparent;
 
-    text: #D7DFDA;
+    base: #0B1110;
+    surface-panel: rgba(11, 17, 16, 92%);
+    surface-card: rgba(16, 23, 22, 94%);
+    surface-hover: rgba(23, 32, 30, 96%);
+
+    text-main: #D7DFDA;
     text-muted: #AEBDB6;
     text-dim: #7D8D86;
 
-    sage: #42635D;
-    sage-strong: #6F9189;
+    sage-active: #42635D;
+    sage-hover: rgba(49, 72, 68, 54%);
     sage-row: rgba(66, 99, 93, 58%);
-    sage-row-hover: rgba(66, 99, 93, 34%);
     amber: #B7925F;
     danger: #C87469;
+
     border: rgba(167, 185, 177, 14%);
-    border-strong: rgba(167, 185, 177, 30%);
+    border-focus: rgba(167, 185, 177, 30%);
+
+    panel-radius: 14px;
+    card-radius: 14px;
+    control-radius: 10px;
+    row-radius: 10px;
 
     font: "Inter 11";
     mono-font: "JetBrainsMono Nerd Font 10";
-    radius: 14px;
-    radius-control: 10px;
 }
 
 window {
     transparency: "real";
-    background-color: @bg;
-    text-color: @text;
+    background-color: @background;
+    text-color: @text-main;
 }
 
 mainbox {
-    background-color: @surface;
+    background-color: @surface-panel;
     border: 1px;
     border-color: @border;
-    border-radius: @radius;
-    padding: 10px;
-    spacing: 8px;
+    border-radius: @panel-radius;
+    padding: 12px;
+    spacing: 9px;
 }
 
 inputbar {
-    background-color: @surface-alt;
+    background-color: @surface-card;
     border: 1px;
     border-color: @border;
-    border-radius: @radius-control;
-    padding: 7px 9px;
-    spacing: 7px;
-    text-color: @text;
+    border-radius: @control-radius;
+    padding: 7px 10px;
+    spacing: 8px;
+    text-color: @text-main;
 }
 
 prompt {
     background-color: transparent;
     text-color: @text-dim;
-    padding: 0 6px 0 0;
+    padding: 0 7px 0 0;
 }
 
 entry {
     background-color: transparent;
-    text-color: @text;
+    text-color: @text-main;
     placeholder-color: @text-dim;
-    cursor-color: @sage-strong;
+    cursor-color: @text-muted;
     selected-color: @sage-row;
 }
 
@@ -73,26 +76,18 @@ listview {
     border: 0;
     margin: 0;
     padding: 0;
-    spacing: 3px;
+    spacing: 4px;
     fixed-height: false;
     scrollbar: false;
-}
-
-scrollbar {
-    width: 4px;
-    background-color: transparent;
-    handle-color: rgba(167, 185, 177, 18%);
-    handle-width: 4px;
-    border-radius: 999px;
 }
 
 element {
     background-color: transparent;
     border: 1px;
     border-color: transparent;
-    border-radius: @radius-control;
-    padding: 7px 9px;
-    spacing: 8px;
+    border-radius: @row-radius;
+    padding: 7px 10px;
+    spacing: 9px;
     text-color: @text-muted;
 }
 
@@ -106,7 +101,7 @@ element selected.normal,
 element selected.active {
     background-color: @sage-row;
     border-color: @border;
-    text-color: @text;
+    text-color: @text-main;
 }
 
 element urgent.normal,
@@ -117,9 +112,9 @@ element selected.urgent {
 }
 
 element-icon {
-    size: 1.0em;
-    padding: 0 3px 0 0;
     background-color: transparent;
+    size: 1.05em;
+    padding: 0 3px 0 0;
 }
 
 element-text {
@@ -129,11 +124,11 @@ element-text {
 }
 
 message {
-    background-color: @surface-alt;
+    background-color: @surface-card;
     border: 1px;
     border-color: @border;
-    border-radius: @radius-control;
-    padding: 8px;
+    border-radius: @control-radius;
+    padding: 8px 10px;
 }
 
 textbox {

@@ -1,45 +1,43 @@
-/* Stage-2 forensic reset: graphite glass top bar, no bright color cast. */
+/* Stage-2 layout rebuild: separate graphite pills, not a tinted panel strip. */
 
 /* Palette */
 @define-color base_00 #0B1110;
 @define-color base_01 #101716;
 @define-color base_02 #17201E;
 @define-color base_03 #202B28;
-@define-color text_00 #D7DFDA;
-@define-color text_01 #AEBDB6;
-@define-color text_02 #7D8D86;
-@define-color sage_00 #314844;
-@define-color sage_01 #42635D;
-@define-color sage_02 #6F9189;
-@define-color sage_03 #A7B9B1;
-@define-color amber_00 #B7925F;
+@define-color surface_panel rgba(11, 17, 16, 0.92);
+@define-color surface_card rgba(16, 23, 22, 0.94);
+@define-color surface_hover rgba(23, 32, 30, 0.96);
+@define-color text_main #D7DFDA;
+@define-color text_muted #AEBDB6;
+@define-color text_dim #7D8D86;
+@define-color sage_active #42635D;
+@define-color sage_hover #314844;
+@define-color amber #B7925F;
 @define-color danger #C87469;
 @define-color warning #D1A15F;
 @define-color success #8AAA7F;
 @define-color border rgba(167, 185, 177, 0.14);
-@define-color border_strong rgba(167, 185, 177, 0.30);
+@define-color border_focus rgba(167, 185, 177, 0.30);
 
-/* Base */
+/* Base bar */
 * {
   all: unset;
   min-height: 0;
-  border: 0;
   font-family: "Inter", "JetBrainsMono Nerd Font", sans-serif;
   font-size: 11px;
   font-weight: 500;
-  color: @text_01;
 }
 
 window#waybar {
   background: transparent;
 }
 
-/* Dark island modules */
+/* Module pills */
 #custom-launcher,
 #workspaces,
 #window,
 #tray,
-#custom-updates,
 #network,
 #pulseaudio,
 #battery,
@@ -48,16 +46,14 @@ window#waybar {
 #custom-power {
   margin-top: 3px;
   margin-bottom: 3px;
-  padding: 2px 8px;
-  background: rgba(11, 17, 16, 0.76);
-  border: 1px solid @border;
-  border-radius: 10px;
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.24);
-}
-
-#custom-launcher,
-#workspaces {
   margin-left: 0;
+  margin-right: 6px;
+  padding: 2px 9px;
+  background: @surface_panel;
+  border: 1px solid @border;
+  border-radius: 999px;
+  color: @text_muted;
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.24);
 }
 
 #clock,
@@ -66,52 +62,53 @@ window#waybar {
 }
 
 #custom-launcher:hover,
-#custom-clipboard:hover,
-#custom-power:hover,
 #network:hover,
 #pulseaudio:hover,
 #battery:hover,
-#clock:hover {
-  background: rgba(16, 23, 22, 0.84);
-  border-color: @border_strong;
-  color: @text_00;
+#custom-clipboard:hover,
+#clock:hover,
+#custom-power:hover {
+  background: @surface_hover;
+  border-color: @border_focus;
+  color: @text_main;
 }
 
-/* Left cluster */
+/* Left launcher */
 #custom-launcher {
-  padding-left: 10px;
-  padding-right: 10px;
-  color: @text_01;
+  min-width: 28px;
+  padding-left: 11px;
+  padding-right: 11px;
+  color: @text_dim;
 }
 
 #custom-launcher:hover {
-  color: @sage_03;
+  color: @text_main;
 }
 
-/* Workspace pills */
+/* Workspaces */
 #workspaces {
   padding: 2px 4px;
-  background: rgba(11, 17, 16, 0.66);
+  background: rgba(11, 17, 16, 0.78);
 }
 
 #workspaces button {
   min-width: 18px;
   margin: 0 1px;
-  padding: 1px 6px;
+  padding: 1px 7px;
   border-radius: 999px;
   background: transparent;
-  color: @text_02;
+  color: @text_dim;
 }
 
 #workspaces button:hover {
-  background: rgba(49, 72, 68, 0.34);
-  color: @text_01;
+  background: rgba(49, 72, 68, 0.42);
+  color: @text_muted;
 }
 
 #workspaces button.active {
-  background: rgba(66, 99, 93, 0.86);
-  color: @text_00;
-  border: 1px solid rgba(167, 185, 177, 0.16);
+  background: @sage_active;
+  color: @text_main;
+  border: 1px solid rgba(167, 185, 177, 0.18);
 }
 
 #workspaces button.urgent {
@@ -119,48 +116,60 @@ window#waybar {
   color: @danger;
 }
 
-/* Center title */
+/* Center window */
 #window {
-  padding-left: 12px;
-  padding-right: 12px;
-  background: rgba(11, 17, 16, 0.52);
-  color: @text_02;
+  min-width: 180px;
+  padding-left: 13px;
+  padding-right: 13px;
+  background: rgba(11, 17, 16, 0.66);
+  border-radius: 999px;
+  color: @text_dim;
   font-weight: 500;
 }
 
 window#waybar.empty #window {
-  color: rgba(125, 141, 134, 0.70);
+  color: rgba(125, 141, 134, 0.68);
 }
 
-/* Right cluster */
+/* Right status */
 #tray {
-  padding-left: 7px;
-  padding-right: 7px;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 #tray menu {
-  background: rgba(11, 17, 16, 0.96);
+  background: rgba(11, 17, 16, 0.98);
   border: 1px solid @border;
   border-radius: 10px;
-  color: @text_00;
-}
-
-#custom-updates {
-  color: @text_02;
+  color: @text_main;
 }
 
 #network,
 #pulseaudio,
 #battery,
 #custom-clipboard {
-  color: @text_01;
+  color: @text_muted;
 }
 
 #network.disconnected,
 #pulseaudio.muted {
-  color: @text_02;
+  color: @text_dim;
 }
 
+#clock {
+  color: @text_main;
+  font-weight: 600;
+}
+
+#custom-power {
+  color: @text_dim;
+}
+
+#custom-power:hover {
+  color: @amber;
+}
+
+/* States */
 #battery.charging,
 #battery.plugged {
   color: @success;
@@ -174,28 +183,15 @@ window#waybar.empty #window {
   color: @danger;
 }
 
-#clock {
-  color: @text_00;
-  font-weight: 600;
-}
-
-#custom-power {
-  color: @text_02;
-}
-
-#custom-power:hover {
-  color: @amber_00;
-}
-
-/* Tooltip */
+/* Tooltips */
 tooltip {
-  background: rgba(11, 17, 16, 0.96);
-  border: 1px solid @border_strong;
+  background: rgba(11, 17, 16, 0.98);
+  border: 1px solid @border_focus;
   border-radius: 10px;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.34);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.38);
 }
 
 tooltip label {
   padding: 6px 8px;
-  color: @text_00;
+  color: @text_main;
 }

@@ -13,7 +13,13 @@ configuration {
     scroll-method: 0;
     sidebar-mode: false;
     hover-select: false;
+    normalize-match: true;
+    steal-focus: true;
+    click-to-exit: true;
     kb-cancel: "Escape,Control+g";
+    kb-accept-entry: "Return,KP_Enter";
+    kb-row-up: "Up,Control+p";
+    kb-row-down: "Down,Control+n";
 }
 
 @theme "~/.config/rofi/themes/launcher.rasi"

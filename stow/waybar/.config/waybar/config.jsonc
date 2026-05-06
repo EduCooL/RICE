@@ -16,7 +16,6 @@
   ],
   "modules-right": [
     "tray",
-    "custom/updates",
     "network",
     "pulseaudio",
     "battery",
@@ -42,8 +41,8 @@
   },
 
   "hyprland/window": {
-    "format": "{}",
-    "max-length": 52,
+    "format": "{title}",
+    "max-length": 42,
     "separate-outputs": true,
     "rewrite": {
       "^$": "quiet workspace"
@@ -53,13 +52,6 @@
   "tray": {
     "icon-size": 14,
     "spacing": 7
-  },
-
-  "custom/updates": {
-    "exec": "~/.config/waybar/modules/updates.sh",
-    "interval": 1800,
-    "return-type": "json",
-    "tooltip": true
   },
 
   "network": {

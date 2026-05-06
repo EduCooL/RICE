@@ -24,7 +24,11 @@ if [[ -z "$history" ]]; then
   exit 0
 fi
 
-selection="$(printf '%s\n' "$history" | rofi -dmenu -i -no-show-icons -p "clipboard" -theme "$HOME/.config/rofi/themes/clipboard.rasi" || true)"
+selection="$(
+  printf '%s\n' "$history" |
+    rofi -dmenu -i -no-show-icons -matching fuzzy -p "clipboard" \
+      -theme "$HOME/.config/rofi/themes/clipboard.rasi" || true
+)"
 
 if [[ -z "$selection" ]]; then
   exit 0

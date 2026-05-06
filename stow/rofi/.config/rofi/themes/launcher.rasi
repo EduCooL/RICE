@@ -15,7 +15,6 @@ inputbar {
 }
 
 prompt {
-    content: "launch";
     text-color: @text-dim;
 }
 

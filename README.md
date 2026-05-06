@@ -616,6 +616,12 @@ Forensic reset scope:
 - GTK CSS now darkens conservative baseline controls used by Thunar and theme tools.
 - Qt config now consistently prefers Kvantum and portal dialogs, with manual `qt5ct`/`qt6ct` verification still required.
 
+## Stage 2 layout rebuild
+
+This pass treats the failure as composition and component design, not wallpaper. It rebuilds the stock-component layout around a consistent card system: small Waybar pills, Rofi command cards, SwayNC dashboard-like cards, a deliberate Hyprlock card, and safer GTK/Thunar baseline styling.
+
+The reference image includes dashboard-like custom UI. Waybar, Rofi, SwayNC, and GTK can only approximate it. A faithful reproduction requires Stage 3 Quickshell/dashboard work. Stage 2 focuses on making the stock-component desktop visually coherent and usable.
+
 Aligned areas:
 
 - shared `surface_*` semantic tokens across theme files

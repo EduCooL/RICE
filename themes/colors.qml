@@ -10,15 +10,24 @@ QtObject {
     readonly property color surface00: Qt.rgba(11 / 255, 17 / 255, 16 / 255, 0.72)
     readonly property color surface01: Qt.rgba(16 / 255, 23 / 255, 22 / 255, 0.78)
     readonly property color surface02: Qt.rgba(23 / 255, 32 / 255, 30 / 255, 0.84)
+    readonly property color surfacePanel: Qt.rgba(11 / 255, 17 / 255, 16 / 255, 0.92)
+    readonly property color surfaceCard: Qt.rgba(16 / 255, 23 / 255, 22 / 255, 0.94)
+    readonly property color surfaceHover: Qt.rgba(23 / 255, 32 / 255, 30 / 255, 0.96)
 
     readonly property color text00: "#D7DFDA"
     readonly property color text01: "#AEBDB6"
     readonly property color text02: "#7D8D86"
+    readonly property color textMain: "#D7DFDA"
+    readonly property color textMuted: "#AEBDB6"
+    readonly property color textDim: "#7D8D86"
 
     readonly property color sage00: "#314844"
     readonly property color sage01: "#42635D"
     readonly property color sage02: "#6F9189"
     readonly property color sage03: "#A7B9B1"
+    readonly property color sageActive: "#42635D"
+    readonly property color sageHover: "#314844"
+    readonly property color sageText: "#D7DFDA"
 
     readonly property color amber00: "#B7925F"
     readonly property color amber01: "#E6C48F"
@@ -30,5 +39,16 @@ QtObject {
 
     readonly property color border: Qt.rgba(167 / 255, 185 / 255, 177 / 255, 0.14)
     readonly property color borderStrong: Qt.rgba(167 / 255, 185 / 255, 177 / 255, 0.30)
-    readonly property color shadow: Qt.rgba(0, 0, 0, 0.55)
+    readonly property color borderFocus: Qt.rgba(167 / 255, 185 / 255, 177 / 255, 0.30)
+    readonly property color shadow: Qt.rgba(0, 0, 0, 0.65)
+
+    readonly property int panelRadius: 14
+    readonly property int cardRadius: 14
+    readonly property int controlRadius: 10
+    readonly property int panelPadding: 12
+    readonly property int cardPadding: 10
+    readonly property int rowPaddingY: 7
+    readonly property int rowPaddingX: 10
+    readonly property int moduleGap: 6
+    readonly property int barHeight: 30
 }

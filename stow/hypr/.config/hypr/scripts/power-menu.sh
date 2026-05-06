@@ -12,11 +12,17 @@ confirm() {
   local action="$1"
   local answer
 
-  answer="$(printf 'No\nYes\n' | rofi -dmenu -i -no-show-icons -p "$action?" -theme "$theme" || true)"
+  answer="$(
+    printf 'No\nYes\n' |
+      rofi -dmenu -i -no-show-icons -matching normal -p "$action?" -theme "$theme" || true
+  )"
   [[ "$answer" == "Yes" ]]
 }
 
-choice="$(printf 'Lock\nLogout\nSuspend\nReboot\nShutdown\n' | rofi -dmenu -i -no-show-icons -p "power" -theme "$theme" || true)"
+choice="$(
+  printf 'Lock\nLogout\nSuspend\nReboot\nShutdown\n' |
+    rofi -dmenu -i -no-show-icons -matching normal -p "power" -theme "$theme" || true
+)"
 
 case "$choice" in
   Lock)
